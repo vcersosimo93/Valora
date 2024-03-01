@@ -18,21 +18,28 @@ public class Tasador extends Usuario{
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_tasador", nullable = true)
     private TipoTasador tipoTasador;
-    
-	@OneToMany(mappedBy = "tasador", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orden> ordenes = new ArrayList<>();
 
-//	@OneToMany(mappedBy = "informe", cascade = CascadeType.ALL, orphanRemoval = true)
-//  private List<Informe> informes = new ArrayList<>();
+	@OneToMany(mappedBy = "tasadorInspeccion", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Orden> ordenesInspeccion = new ArrayList<>();
+
+	@OneToMany(mappedBy = "tasadorAntecedente", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Orden> ordenesAntecedentes = new ArrayList<>();
 
 	
 	public Tasador() {
 	}
-	
-	public Tasador(TipoTasador tipoTasador, List<Orden> ordenes) {
-		super();
+
+	public Tasador(TipoTasador tipoTasador, List<Orden> ordenesInspeccion, List<Orden> ordenesAntecedentes) {
 		this.tipoTasador = tipoTasador;
-		this.ordenes = ordenes;
+		this.ordenesInspeccion = ordenesInspeccion;
+		this.ordenesAntecedentes = ordenesAntecedentes;
+	}
+
+	public Tasador(Long id, String nombre, String username, String password, TipoUsuario tipoUsuario, TipoTasador tipoTasador, List<Orden> ordenesInspeccion, List<Orden> ordenesAntecedentes) {
+		super(id, nombre, username, password, tipoUsuario);
+		this.tipoTasador = tipoTasador;
+		this.ordenesInspeccion = ordenesInspeccion;
+		this.ordenesAntecedentes = ordenesAntecedentes;
 	}
 
 	public TipoTasador getTipoTasador() {
@@ -43,16 +50,20 @@ public class Tasador extends Usuario{
 		this.tipoTasador = tipoTasador;
 	}
 
-	public List<Orden> getOrdenes() {
-		return ordenes;
+	public List<Orden> getOrdenesInspeccion() {
+		return ordenesInspeccion;
 	}
 
-	public void setOrdenes(List<Orden> ordenes) {
-		this.ordenes = ordenes;
+	public void setOrdenesInspeccion(List<Orden> ordenesInspeccion) {
+		this.ordenesInspeccion = ordenesInspeccion;
 	}
-	
 
-	
+	public List<Orden> getOrdenesAntecedentes() {
+		return ordenesAntecedentes;
+	}
 
-	
+	public void setOrdenesAntecedentes(List<Orden> ordenesAntecedentes) {
+		this.ordenesAntecedentes = ordenesAntecedentes;
+	}
+
 }

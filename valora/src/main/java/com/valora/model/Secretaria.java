@@ -12,8 +12,8 @@ import jakarta.persistence.Table;
 @Table(name = "tb_secretaria")
 public class Secretaria extends Usuario{
 
-	@OneToMany(mappedBy = "creadorSecretaria", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orden> ordenes = new ArrayList<>();
+	@OneToMany(mappedBy = "secretaria", cascade = CascadeType.ALL)
+	private List<Orden> ordenes = new ArrayList<>();
 
 	public Secretaria() {
 	}

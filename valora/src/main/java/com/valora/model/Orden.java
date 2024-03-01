@@ -2,139 +2,120 @@ package com.valora.model;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_orden")
 public class Orden {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_orden")
 	private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "secretaria_id") 
-	private Secretaria creadorSecretaria;
+	@ManyToOne
+	@JoinColumn(name = "secretaria_id")
+	private Secretaria secretaria;
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaHoraInspeccion", nullable = true)
-	private LocalDateTime fechaHoraInspeccion;
-	
-    @ManyToOne
-    @JoinColumn(name = "tasador_id") 
-	private Tasador tasador;
-    
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaCreacion", nullable = true)
-	private LocalDateTime fechaCreacion;
+	@ManyToOne
+	@JoinColumn(name = "tasador_inspeccion_id")
+	private Tasador tasadorInspeccion;
 
-    @ManyToOne
-    @JoinColumn(name = "banco_id") 
+	@ManyToOne
+	@JoinColumn(name = "tasador_antecedente_id")
+	private Tasador tasadorAntecedente;
+
+//	@Column(name = "banco")
+	@ManyToOne
 	private Banco banco;
-	
-    @Column(name = "titular", nullable = true)
-	private String titular;
-	
-    @Column(name = "nombreSolicitante", nullable = true)
-	private String nombreSolicitante;
 
-    @Column(name = "telefonoSolicitante", nullable = true)
-	private String telefonoSolicitante;
-	
-    @Column(name = "nombreContacto", nullable = true)
-	private String nombreContacto;
-
-    @Column(name = "telefonoContacto", nullable = true)
-	private String telefonoContacto;
-
-    @Column(name = "calle", nullable = true)
-	private String calle;
-
-    @Column(name = "nroPuerta", nullable = true)
-	private int nroPuerta;
-
-    @Column(name = "unidad", nullable = true)
-	private int unidad;
-	
-    @Column(name = "esquina", nullable = true)
-	private String esquina;
-
-    @Column(name = "localidad", nullable = true)
-	private String localidad;
-
-    @ManyToOne
-    @JoinColumn(name = "departamento_id") 
+	//	@Column(name = "departamento")
+	@ManyToOne
 	private Departamento departamento;
 
-    @Column(name = "padron", nullable = true)
-	private long padron;
-	
-	//TasaciÃ³n o RetasaciÃ³n
-    @Column(name = "tipoDeTrabajo", nullable = true)
-	private String tipoDeTrabajo;
-	
-	//En InspecciÃ³n o en Estudio
-    @Column(name = "recaudos", nullable = true)
-	private String recaudos;
+	@Column(name = "fecha_creacion")
+	private LocalDateTime fechaCreacion;
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaAntecedente", nullable = true)
+	@Column(name = "fecha_hora_inspeccion")
+	private LocalDateTime fechaHoraInspeccion;
+
+	@Column(name = "fecha_solicitud")
+	private LocalDateTime fechaSolicitud;
+
+	@Column(name = "nombre_solicitante")
+	private String nombreSolicitante;
+
+	@Column(name = "telefono_solicitante")
+	private long telefonoSolicitante;
+
+	@Column(name = "nombre_contacto")
+	private String nombreContacto;
+
+	@Column(name = "telefono_contacto")
+	private long telefonoContacto;
+
+	@Column(name = "calle")
+	private String calle;
+
+	@Column(name = "nro_puerta")
+	private int nroPuerta;
+
+	@Column(name = "unidad")
+	private int unidad;
+
+	@Column(name = "esquina")
+	private String esquina;
+
+	@Column(name = "localidad")
+	private String localidad;
+
+	@Column(name = "padron")
+	private long padron;
+
+	@Column(name = "tasacion")
+	private boolean tasacion;
+
+	@Column(name = "retasacion")
+	private boolean retasacion;
+
+	@Column(name = "en_inspeccion")
+	private boolean enInspeccion;
+
+	@Column(name = "en_estudio")
+	private boolean enEstudio;
+
+	@Column(name = "fecha_antecedente")
 	private LocalDateTime fechaAntecedente;
 
-    @ManyToOne
-    @JoinColumn(name = "tasador_antecedente_id") 
-	private Usuario tasadorAntecedente;
-	
-    @Column(name = "oficialBanco", nullable = true)
+	@Column(name = "oficial_banco")
 	private String oficialBanco;
-	
-	// TODO Consultar sobre si puede ser un numero o es un string
-    @Column(name = "sucursal", nullable = true)
+
+	@Column(name = "sucursal")
 	private String sucursal;
-	
-    @Column(name = "observacion", nullable = true)
+
+	@Column(name = "observacion")
 	private String observacion;
 
-//    
-//    @OneToOne(mappedBy = "orden") // Nombre del atributo en Inspeccion que representa la relaciÃ³n inversa
-//    private Inspeccion inspeccion;
-//
-//    @OneToOne(mappedBy = "informe") // Nombre del atributo en Inspeccion que representa la relaciÃ³n inversa
-//    private Informe informe;
-
-	
 	public Orden() {
+
 	}
-	
-	public Orden(int id, Secretaria creadorSecretaria, LocalDateTime fechaHoraInspeccion, Tasador tasador,
-			LocalDateTime fechaCreacion, Banco banco, String titular, String nombreSolicitante,
-			String telefonoSolicitante, String nombreContacto, String telefonoContacto, String calle, int nroPuerta,
-			int unidad, String esquina, String localidad, Departamento departamento, long padron, String tipoDeTrabajo,
-			String recaudos, LocalDateTime fechaAntecedente, Usuario tasadorAntecedente, String oficialBanco,
-			String sucursal, String observacion, Informe informe) {
+
+	public Orden(int id, Secretaria creador, Tasador tasadorInspeccion, Tasador tasadorAntecedente, Banco banco, Departamento departamento,
+			LocalDateTime fechaCreacion, LocalDateTime fechaHoraInspeccion, LocalDateTime fechaSolicitud,
+			String nombreSolicitante, long telefonoSolicitante, String nombreContacto, long telefonoContacto, String calle,
+			int nroPuerta, int unidad, String esquina, String localidad, long padron, boolean tasacion,
+			boolean retasacion, boolean enInspeccion, boolean enEstudio, LocalDateTime fechaAntecedente,
+			String oficialBanco, String sucursal, String observacion) {
 		super();
 		this.id = id;
-		this.creadorSecretaria = creadorSecretaria;
-		this.fechaHoraInspeccion = fechaHoraInspeccion;
-		this.tasador = tasador;
-		this.fechaCreacion = fechaCreacion;
+		this.secretaria = creador;
+		this.tasadorInspeccion = tasadorInspeccion;
+		this.tasadorAntecedente = tasadorAntecedente;
 		this.banco = banco;
-		this.titular = titular;
+		this.departamento = departamento;
+		this.fechaCreacion = fechaCreacion;
+		this.fechaHoraInspeccion = fechaHoraInspeccion;
+		this.fechaSolicitud = fechaSolicitud;
 		this.nombreSolicitante = nombreSolicitante;
 		this.telefonoSolicitante = telefonoSolicitante;
 		this.nombreContacto = nombreContacto;
@@ -144,17 +125,15 @@ public class Orden {
 		this.unidad = unidad;
 		this.esquina = esquina;
 		this.localidad = localidad;
-		this.departamento = departamento;
 		this.padron = padron;
-		this.tipoDeTrabajo = tipoDeTrabajo;
-		this.recaudos = recaudos;
+		this.tasacion = tasacion;
+		this.retasacion = retasacion;
+		this.enInspeccion = enInspeccion;
+		this.enEstudio = enEstudio;
 		this.fechaAntecedente = fechaAntecedente;
-		this.tasadorAntecedente = tasadorAntecedente;
 		this.oficialBanco = oficialBanco;
 		this.sucursal = sucursal;
 		this.observacion = observacion;
-//		this.inspeccion = inspeccion;
-//		this.informe = informe;
 	}
 
 	public int getId() {
@@ -165,36 +144,28 @@ public class Orden {
 		this.id = id;
 	}
 
-	public Secretaria getCreadorSecretaria() {
-		return creadorSecretaria;
+	public Secretaria getSecretaria() {
+		return secretaria;
 	}
 
-	public void setCreadorSecretaria(Secretaria creadorSecretaria) {
-		this.creadorSecretaria = creadorSecretaria;
+	public void setSecretaria(Secretaria secretaria) {
+		this.secretaria = secretaria;
 	}
 
-	public LocalDateTime getFechaHoraInspeccion() {
-		return fechaHoraInspeccion;
+	public Tasador getTasadorInspeccion() {
+		return tasadorInspeccion;
 	}
 
-	public void setFechaHoraInspeccion(LocalDateTime fechaHoraInspeccion) {
-		this.fechaHoraInspeccion = fechaHoraInspeccion;
+	public void setTasadorInspeccion(Tasador tasadorInspeccion) {
+		this.tasadorInspeccion = tasadorInspeccion;
 	}
 
-	public Tasador getTasador() {
-		return tasador;
+	public Tasador getTasadorAntecedente() {
+		return tasadorAntecedente;
 	}
 
-	public void setTasador(Tasador tasador) {
-		this.tasador = tasador;
-	}
-
-	public LocalDateTime getFechaCreacion() {
-		return fechaCreacion;
-	}
-
-	public void setFechaCreacion(LocalDateTime fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+	public void setTasadorAntecedente(Tasador tasadorAntecedente) {
+		this.tasadorAntecedente = tasadorAntecedente;
 	}
 
 	public Banco getBanco() {
@@ -205,12 +176,36 @@ public class Orden {
 		this.banco = banco;
 	}
 
-	public String getTitular() {
-		return titular;
+	public Departamento getDepartamento() {
+		return departamento;
 	}
 
-	public void setTitular(String titular) {
-		this.titular = titular;
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public LocalDateTime getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDateTime fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public LocalDateTime getFechaHoraInspeccion() {
+		return fechaHoraInspeccion;
+	}
+
+	public void setFechaHoraInspeccion(LocalDateTime fechaHoraInspeccion) {
+		this.fechaHoraInspeccion = fechaHoraInspeccion;
+	}
+
+	public LocalDateTime getFechaSolicitud() {
+		return fechaSolicitud;
+	}
+
+	public void setFechaSolicitud(LocalDateTime fechaSolicitud) {
+		this.fechaSolicitud = fechaSolicitud;
 	}
 
 	public String getNombreSolicitante() {
@@ -221,11 +216,11 @@ public class Orden {
 		this.nombreSolicitante = nombreSolicitante;
 	}
 
-	public String getTelefonoSolicitante() {
+	public long getTelefonoSolicitante() {
 		return telefonoSolicitante;
 	}
 
-	public void setTelefonoSolicitante(String telefonoSolicitante) {
+	public void setTelefonoSolicitante(long telefonoSolicitante) {
 		this.telefonoSolicitante = telefonoSolicitante;
 	}
 
@@ -237,11 +232,11 @@ public class Orden {
 		this.nombreContacto = nombreContacto;
 	}
 
-	public String getTelefonoContacto() {
+	public long getTelefonoContacto() {
 		return telefonoContacto;
 	}
 
-	public void setTelefonoContacto(String telefonoContacto) {
+	public void setTelefonoContacto(long telefonoContacto) {
 		this.telefonoContacto = telefonoContacto;
 	}
 
@@ -285,14 +280,6 @@ public class Orden {
 		this.localidad = localidad;
 	}
 
-	public Departamento getDepartamento() {
-		return departamento;
-	}
-
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
-	}
-
 	public long getPadron() {
 		return padron;
 	}
@@ -301,20 +288,36 @@ public class Orden {
 		this.padron = padron;
 	}
 
-	public String getTipoDeTrabajo() {
-		return tipoDeTrabajo;
+	public boolean isTasacion() {
+		return tasacion;
 	}
 
-	public void setTipoDeTrabajo(String tipoDeTrabajo) {
-		this.tipoDeTrabajo = tipoDeTrabajo;
+	public void setTasacion(boolean tasacion) {
+		this.tasacion = tasacion;
 	}
 
-	public String getRecaudos() {
-		return recaudos;
+	public boolean isRetasacion() {
+		return retasacion;
 	}
 
-	public void setRecaudos(String recaudos) {
-		this.recaudos = recaudos;
+	public void setRetasacion(boolean retasacion) {
+		this.retasacion = retasacion;
+	}
+
+	public boolean isEnInspeccion() {
+		return enInspeccion;
+	}
+
+	public void setEnInspeccion(boolean enInspeccion) {
+		this.enInspeccion = enInspeccion;
+	}
+
+	public boolean isEnEstudio() {
+		return enEstudio;
+	}
+
+	public void setEnEstudio(boolean enEstudio) {
+		this.enEstudio = enEstudio;
 	}
 
 	public LocalDateTime getFechaAntecedente() {
@@ -323,14 +326,6 @@ public class Orden {
 
 	public void setFechaAntecedente(LocalDateTime fechaAntecedente) {
 		this.fechaAntecedente = fechaAntecedente;
-	}
-
-	public Usuario getTasadorAntecedente() {
-		return tasadorAntecedente;
-	}
-
-	public void setTasadorAntecedente(Usuario tasadorAntecedente) {
-		this.tasadorAntecedente = tasadorAntecedente;
 	}
 
 	public String getOficialBanco() {
@@ -356,22 +351,5 @@ public class Orden {
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
-
-//	public Inspeccion getInspeccion() {
-//		return inspeccion;
-//	}
-//
-//	public void setInspeccion(Inspeccion inspeccion) {
-//		this.inspeccion = inspeccion;
-//	}
-
-//	public Informe getInforme() {
-//		return informe;
-//	}
-//
-//	public void setInforme(Informe informe) {
-//		this.informe = informe;
-//	}
-    
 
 }

@@ -53,6 +53,7 @@ public abstract class Usuario implements Serializable {
 	}
 
 
+
 //	@JsonCreator
 //	public Usuario(@JsonProperty("nombre") String nombre, @JsonProperty("username") String username,
 //				   @JsonProperty("password") String password) {
