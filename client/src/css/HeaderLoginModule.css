@@ -1,0 +1,13 @@
+.header {
+    display: flex; /* Usa flexbox para manejar el layout */
+    align-items: center; /* Centra verticalmente los elementos */
+    height: 50px; /* Ajusta la altura según sea necesario */
+    margin: 0; /* Elimina los márgenes externos */
+    padding: 0; /* Elimina el relleno interno */
+}
+
+  @media all and (max-width: 600px) {
+    .header {
+      margin: 0% auto;
+    }
+  }

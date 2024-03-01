@@ -1,0 +1,21 @@
+.logo_container {
+  display: flex;
+  justify-content: flex-end; /* Alinea los elementos al final del contenedor (derecha) */
+  align-items: center; /* Centra verticalmente los elementos */
+  height: 100%; /* Establece la altura del contenedor para que ocupe todo el alto del header */
+}
+  
+  .logo {
+    font-weight: 400px;
+    margin: 0%;
+    color: #494969;
+  }
+  
+  .imgHeader {
+    width: 100px;
+    height: 20px;
+    margin-right: 20px;
+  }
+
+
+  

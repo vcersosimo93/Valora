@@ -1,0 +1,6 @@
+.navbar {
+  padding: 1px;
+  height: 100%; /* Establece la altura del NavBar igual a la altura del logo */
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+}
