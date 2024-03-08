@@ -2,6 +2,7 @@ package com.valora.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,8 +26,9 @@ public class Orden {
 	@JoinColumn(name = "tasador_antecedente_id")
 	private Tasador tasadorAntecedente;
 
-//	@Column(name = "banco")
 	@ManyToOne
+	@JoinColumn(name = "banco_id")
+	@JsonIgnore
 	private Banco banco;
 
 	//	@Column(name = "departamento")

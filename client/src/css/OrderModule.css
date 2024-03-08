@@ -1,0 +1,83 @@
+/*Orden*/
+.order {
+    background-color: cadetblue;
+}
+
+.order h2 {
+    color: black;
+    text-align: center;
+    margin-top: 0vh;
+}
+
+/*Inspeccion*/
+.flex-container-inspeccion .form-group {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-bottom: 10px; /* Espacio entre cada grupo de entrada */
+    background-color: blue;
+    width: 300px;
+}
+
+.flex-container-inspeccion .form-group label {
+    width: 80px;
+    background-color: black;
+}
+
+.flex-container-inspeccion .form-group select,
+.flex-container-inspeccion .form-group input {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.flex-container-inspeccion .form-group select{
+    height: 35px;
+}
+
+.flex-container-inspeccion {
+    display: flex;
+    background-color: brown;
+    justify-content: flex-end; /* Mueve el contenido hacia la derecha */
+    
+}
+
+.inspeccion{
+    margin: 20px; /* Añade un margen a la derecha del botón */  
+    border: 4px solid black;
+    padding: 10px;
+    border-radius: 10px; /* Aplica bordes redondeados */    
+}
+
+
+.inspeccion input{
+    width: 100px;
+    height: 30px;
+}
+
+
+.inspeccion h4 {
+    margin-top: 0; /* Eliminar el margen superior del h4 */
+    background-color: blanchedalmond;
+    text-align: center;
+}
+
+
+/*orden-tasacion*/
+
+.orden-tasacion h4{
+    text-align: center;
+}
+
+.flex-container-orden-tasacion .form-group {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-bottom: 10px; /* Espacio entre cada grupo de entrada */
+    background-color: blue;
+    width: 300px;
+}
+
+.flex-container-orden-tasacion .form-group label {
+    width: 80px;
+    background-color: black;
+}

@@ -5,6 +5,7 @@ import SignUp from './components/SignUp.jsx';
 import Header from './components/fragments/header/Header.jsx';
 import Footer from './components/fragments/footer/Footer.jsx';
 import HeaderLogin from './components/fragments/header/HeaderLogin.jsx';
+import Order from './components/Order.jsx';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<WithHeaderLogin><Login /></WithHeaderLogin>} />
           {/* La ruta de SignUp está envuelta con el componente WithHeader */}
           <Route path="/RegistroUsuarios" element={<WithHeader><SignUp /></WithHeader>} />
+          <Route path="/Orden" element={<WithHeader><Order /></WithHeader>} />
         </Routes>
         <Footer />
       </div>

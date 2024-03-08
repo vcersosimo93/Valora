@@ -111,6 +111,8 @@ public class ValoraApplication implements CommandLineRunner{
 		List<Orden> listaOrdenes = new ArrayList<>();
 		listaOrdenes.add(orden);
 		banco.setOrdenes(listaOrdenes);
+		secretaria.setOrdenes(listaOrdenes);
+		tasador.setOrdenesInspeccion(listaOrdenes);
 
 	}
 

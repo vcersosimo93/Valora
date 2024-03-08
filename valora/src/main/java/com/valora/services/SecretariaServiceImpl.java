@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.valora.model.Secretaria;
 import com.valora.repository.SecretariaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SecretariaServiceImpl implements ISecretariaService{
@@ -37,6 +38,7 @@ public class SecretariaServiceImpl implements ISecretariaService{
     }
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Secretaria> findAll() {
 		return secretariaRepository.findAll();
 	}

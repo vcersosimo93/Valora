@@ -22,7 +22,7 @@ const Navlinks = () => {
                     <a class="nav-link" href="#">MyHobbies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Account</a>
+                    <a class="nav-link" href="/orden">Orden</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/">Logout</a>
