@@ -67,6 +67,7 @@
 
 .orden-tasacion h4{
     text-align: center;
+    background-color: antiquewhite;
 }
 
 .flex-container-orden-tasacion .form-group {
@@ -80,4 +81,21 @@
 .flex-container-orden-tasacion .form-group label {
     width: 80px;
     background-color: black;
+}
+
+.orden-tasacion{
+    background-color:chartreuse;
+}
+
+
+.flex-container-orden-tasacion .form-group select,
+.flex-container-orden-tasacion .form-group input {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.flex-container-orden-tasacion .form-group select{
+    height: 35px;
 }
