@@ -9,11 +9,12 @@
     margin-top: 0vh;
 }
 
-/*Inspeccion*/
+/***********************************Inspeccion********************************/
+
 .flex-container-inspeccion .form-group {
     display: flex;
-    align-items: center; /* Alinea verticalmente los elementos */
-    margin-bottom: 10px; /* Espacio entre cada grupo de entrada */
+    align-items: center;
+    margin-bottom: 10px;
     background-color: blue;
     width: 300px;
 }
@@ -31,71 +32,317 @@
     font-weight: 600;
 }
 
-.flex-container-inspeccion .form-group select{
+.flex-container-inspeccion .form-group select {
     height: 35px;
 }
 
 .flex-container-inspeccion {
     display: flex;
     background-color: brown;
-    justify-content: flex-end; /* Mueve el contenido hacia la derecha */
-    
+    justify-content: flex-end;
+
 }
 
-.inspeccion{
-    margin: 20px; /* Añade un margen a la derecha del botón */  
+.inspeccion {
+    margin: 20px;
     border: 4px solid black;
     padding: 10px;
-    border-radius: 10px; /* Aplica bordes redondeados */    
+    border-radius: 10px;
 }
 
 
-.inspeccion input{
+.inspeccion input {
     width: 100px;
     height: 30px;
 }
 
 
 .inspeccion h4 {
-    margin-top: 0; /* Eliminar el margen superior del h4 */
+    margin-top: 0;
     background-color: blanchedalmond;
     text-align: center;
 }
 
 
-/*orden-tasacion*/
+/**************************orden-tasacion*********************************/
 
-.orden-tasacion h4{
+.flex-container-orden-tasacion h4 {
     text-align: center;
     background-color: antiquewhite;
 }
 
-.flex-container-orden-tasacion .form-group {
-    display: flex;
-    align-items: center; /* Alinea verticalmente los elementos */
-    margin-bottom: 10px; /* Espacio entre cada grupo de entrada */
-    background-color: blue;
-    width: 300px;
-}
-
-.flex-container-orden-tasacion .form-group label {
-    width: 80px;
+.flex-container-orden-tasacion .orden-tasacion {
     background-color: black;
 }
 
-.orden-tasacion{
-    background-color:chartreuse;
+.flex-container-orden-tasacion .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Alinea horizontalmente al inicio */
+    margin-bottom: 10px;
+    margin-left: auto;
+    /* Alinea a la izquierda */
+    margin-right: auto;
+    /* Alinea a la derecha */
+    background-color: blue;
+    width: 700px;
+    /* Ancho máximo del contenedor */
+}
+
+.flex-container-orden-tasacion .form-group input[type="date"],
+.flex-container-orden-tasacion .form-group input[type="number"] {
+    width: 200px;
+    /* Ancho deseado para los inputs de tipo date y number */
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.flex-container-orden-tasacion .form-group label {
+    width: 120px;
+    /* Ancho adecuado para los labels */
+    text-align: right;
+    /* Alinea el texto a la derecha */
+    margin-right: 10px;
+    /* Espacio entre el label y el input/select */
+    background-color: black;
+    ;
+}
+
+.orden-tasacion {
+    background-color: chartreuse;
 }
 
 
 .flex-container-orden-tasacion .form-group select,
-.flex-container-orden-tasacion .form-group input {
+.flex-container-orden-tasacion .form-group input[type="text"] {
+    flex: 1;
+    /* El input/select ocupará todo el espacio disponible */
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.flex-container-orden-tasacion .form-group select {
+    height: 35px;
+}
+
+
+/**************************ubicacion inmueble*********************************/
+
+.flex-container-ubicacion-inmueble h6 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.flex-container-orden-tasacion .orden-tasacion {
+    background-color: black;
+}
+
+.flex-container-ubicacion-inmueble .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Alinea horizontalmente al inicio */
+    margin-bottom: 10px;
+    margin-left: auto;
+    /* Alinea a la izquierda */
+    margin-right: auto;
+    /* Alinea a la derecha */
+    background-color: blue;
+    width: 700px;
+    /* Ancho máximo del contenedor */
+}
+
+.flex-container-ubicacion-inmueble .form-group input[type="date"],
+.flex-container-ubicacion-inmueble .form-group input[type="number"] {
+    width: 200px;
+    /* Ancho deseado para los inputs de tipo date y number */
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.flex-container-ubicacion-inmueble .form-group label {
+    width: 120px;
+    /* Ancho adecuado para los labels */
+    text-align: right;
+    /* Alinea el texto a la derecha */
+    margin-right: 10px;
+    /* Espacio entre el label y el input/select */
+    background-color: black;
+    ;
+}
+
+
+.flex-container-ubicacion-inmueble .form-group select,
+.flex-container-ubicacion-inmueble .form-group input[type="text"] {
+    flex: 1;
+    /* El input/select ocupará todo el espacio disponible */
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.flex-container-ubicacion-inmueble .form-group select {
+    height: 35px;
+}
+
+
+/**************************Tipo de trabajo*********************************/
+
+
+.flex-container-tipo-trabajo {
+    background-color: blue;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+}
+
+.flex-container-tipo-trabajo h6 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.label-tasacion {
+    text-align: center;
+    /* Alinea el texto a la derecha */
+    background-color: brown;
+}
+
+
+/**************************Recaudos*********************************/
+
+
+.flex-container-recaudos {
+    background-color: blue;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+}
+
+.flex-container-recaudos h6 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.label-inspeccion {
+    text-align: center;
+    /* Alinea el texto a la derecha */
+    background-color: brown;
+}
+
+
+
+
+/**************************Antecedentes*********************************/
+
+.flex-container-antecedentes {
+    background-color: blue;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+}
+
+.flex-container-antecedentes h6 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.label-antecedentes {
+    text-align: center;
+    /* Alinea el texto a la derecha */
+    background-color: brown;
+}
+
+
+.flex-container-antecedentes input, .flex-container-antecedentes select{
     width: 200px;
     height: 30px;
     font-size: 14px;
     font-weight: 600;
 }
 
-.flex-container-orden-tasacion .form-group select{
-    height: 35px;
+
+
+
+/**************************Pre Observaciones*********************************/
+
+
+.flex-container-pre-observaciones {
+    background-color: blue;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+    margin-top: 30px;
 }
+
+.flex-container-pre-observaciones h6 {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.label-pre-observaciones {
+    text-align: center;
+    /* Alinea el texto a la derecha */
+    background-color: brown;
+}
+
+
+.flex-container-pre-observaciones input{
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/**************************Observaciones*********************************/
+
+
+.observaciones {
+    margin-top: 50px;
+    height: 100vh; /* Sin comillas alrededor de 100vh */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background-color: brown;
+}
+
+.observaciones label{
+    background-color: black;
+}
+
+.form-outline-observaciones {
+    width: 80%;
+    text-align: center; /* Alinea el contenido horizontalmente */
+    margin-bottom: 20px;
+}
+
+/*
+.form-outline-observaciones textarea {
+    width: 100%; 
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

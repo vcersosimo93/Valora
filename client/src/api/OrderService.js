@@ -25,6 +25,15 @@ const OrderService = {
     }
   },
 
+  getDepartamentos: async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/departamento`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener departamentos:', error);
+      throw error;
+    }
+  },
 
 
 };
