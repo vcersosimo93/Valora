@@ -1,12 +1,20 @@
-/*Orden*/
+
+/***********************************Orden********************************/
 .order {
-    background-color: cadetblue;
+    background-color: #0f360f64;
+    margin-bottom: 0; /* Elimina el margen inferior */
+    height: 260vh;
 }
 
 .order h2 {
     color: black;
     text-align: center;
-    margin-top: 0vh;
+    padding: 10px 0; /* Añade un poco de espacio alrededor del texto */
+    font-size: 35px;
+    color: rgba(1, 1, 50, 0.7);
+    border-bottom: 4px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
+    width: 50%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
 }
 
 /***********************************Inspeccion********************************/
@@ -15,13 +23,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    background-color: blue;
+    margin-top: 10px;
     width: 300px;
 }
 
 .flex-container-inspeccion .form-group label {
     width: 80px;
-    background-color: black;
 }
 
 .flex-container-inspeccion .form-group select,
@@ -38,16 +45,16 @@
 
 .flex-container-inspeccion {
     display: flex;
-    background-color: brown;
     justify-content: flex-end;
+
 
 }
 
 .inspeccion {
-    margin: 20px;
-    border: 4px solid black;
+    margin: 30px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
 }
 
 
@@ -58,21 +65,39 @@
 
 
 .inspeccion h4 {
-    margin-top: 0;
-    background-color: blanchedalmond;
+    margin-bottom: 0px;
     text-align: center;
+    color: rgba(1, 1, 50, 0.7);
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
+    width: 50%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
 }
 
 
 /**************************orden-tasacion*********************************/
 
-.flex-container-orden-tasacion h4 {
-    text-align: center;
-    background-color: antiquewhite;
+.ordenUbicacion{
+    max-width: 1000px; /* Puedes ajustar este valor según sea necesario */
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Añade un poco de espacio alrededor del formulario */
+    border: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
+    margin-bottom: 35px;
+    border-radius: 5px;
 }
 
+.flex-container-orden-tasacion h4 {
+    text-align: center;
+    color: rgba(1, 1, 50, 0.7);
+    width: 50%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
+
+}
+
+
 .flex-container-orden-tasacion .orden-tasacion {
-    background-color: black;
+    padding: 10px; /* Añade un poco de espacio alrededor del formulario */
 }
 
 .flex-container-orden-tasacion .form-group {
@@ -85,7 +110,6 @@
     /* Alinea a la izquierda */
     margin-right: auto;
     /* Alinea a la derecha */
-    background-color: blue;
     width: 700px;
     /* Ancho máximo del contenedor */
 }
@@ -107,13 +131,9 @@
     /* Alinea el texto a la derecha */
     margin-right: 10px;
     /* Espacio entre el label y el input/select */
-    background-color: black;
-    ;
 }
 
-.orden-tasacion {
-    background-color: chartreuse;
-}
+
 
 
 .flex-container-orden-tasacion .form-group select,
@@ -132,13 +152,13 @@
 
 /**************************ubicacion inmueble*********************************/
 
-.flex-container-ubicacion-inmueble h6 {
+.flex-container-ubicacion-inmueble h4 {
     text-align: center;
-    background-color: antiquewhite;
-}
-
-.flex-container-orden-tasacion .orden-tasacion {
-    background-color: black;
+    color: rgba(1, 1, 50, 0.7);
+    width: 50%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
 }
 
 .flex-container-ubicacion-inmueble .form-group {
@@ -151,7 +171,6 @@
     /* Alinea a la izquierda */
     margin-right: auto;
     /* Alinea a la derecha */
-    background-color: blue;
     width: 700px;
     /* Ancho máximo del contenedor */
 }
@@ -172,9 +191,6 @@
     text-align: right;
     /* Alinea el texto a la derecha */
     margin-right: 10px;
-    /* Espacio entre el label y el input/select */
-    background-color: black;
-    ;
 }
 
 
@@ -194,22 +210,32 @@
 
 /**************************Tipo de trabajo*********************************/
 
+.tipoTrabajoRecaudoAntecedente{
+    max-width: 1300px; /* Puedes ajustar este valor según sea necesario */
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Añade un poco de espacio alrededor del formulario */
+    border: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
+    margin-bottom: 35px;
+    border-radius: 5px;
+}
+
 
 .flex-container-tipo-trabajo {
-    background-color: blue;
     width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
     box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
 }
 
-.flex-container-tipo-trabajo h6 {
+.flex-container-tipo-trabajo h4 {
     text-align: center;
-    background-color: antiquewhite;
+    color: rgba(1, 1, 50, 0.7);
+    width: 20%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
 }
 
 .label-tasacion {
     text-align: center;
-    /* Alinea el texto a la derecha */
-    background-color: brown;
 }
 
 
@@ -217,20 +243,22 @@
 
 
 .flex-container-recaudos {
-    background-color: blue;
     width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
     box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+    margin-top: 25px;
 }
 
-.flex-container-recaudos h6 {
+.flex-container-recaudos h4 {
     text-align: center;
-    background-color: antiquewhite;
+    color: rgba(1, 1, 50, 0.7);
+    width: 20%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
 }
 
 .label-inspeccion {
     text-align: center;
-    /* Alinea el texto a la derecha */
-    background-color: brown;
 }
 
 
@@ -239,20 +267,23 @@
 /**************************Antecedentes*********************************/
 
 .flex-container-antecedentes {
-    background-color: blue;
     width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
     box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+    margin-top: 25px;
 }
 
-.flex-container-antecedentes h6 {
+
+.flex-container-antecedentes h4 {
     text-align: center;
-    background-color: antiquewhite;
+    color: rgba(1, 1, 50, 0.7);
+    width: 20%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
 }
 
 .label-antecedentes {
     text-align: center;
-    /* Alinea el texto a la derecha */
-    background-color: brown;
 }
 
 
@@ -268,9 +299,17 @@
 
 /**************************Pre Observaciones*********************************/
 
+.observacionesPre{
+    max-width: 1300px; /* Puedes ajustar este valor según sea necesario */
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Añade un poco de espacio alrededor del formulario */
+    border: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
+    margin-bottom: 35px;
+    border-radius: 5px;
+
+}
 
 .flex-container-pre-observaciones {
-    background-color: blue;
     width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
     box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
     margin-top: 30px;
@@ -278,13 +317,10 @@
 
 .flex-container-pre-observaciones h6 {
     text-align: center;
-    background-color: antiquewhite;
 }
 
 .label-pre-observaciones {
     text-align: center;
-    /* Alinea el texto a la derecha */
-    background-color: brown;
 }
 
 
@@ -301,15 +337,18 @@
 
 .observaciones {
     margin-top: 50px;
-    height: 100vh; /* Sin comillas alrededor de 100vh */
     display: flex; 
     justify-content: center; 
     align-items: center;
-    background-color: brown;
 }
 
-.observaciones label{
-    background-color: black;
+.form-outline-observaciones h4{
+    text-align: center;
+    color: rgba(1, 1, 50, 0.7);
+    width: 20%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(1, 1, 50, 0.7); /* Borde inferior de 2px */
 }
 
 .form-outline-observaciones {
