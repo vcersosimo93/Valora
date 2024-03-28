@@ -18,12 +18,10 @@ function Login() {
       setLoading(true);
       console.log("info")
       console.log(info)
-      const response = await LoginService(info); // Llama al servicio SignUpService con los datos del usuario
-      console.log(response.data); // Muestra la respuesta del backend en la consola
-      // Aquí podrías agregar lógica adicional, como redirigir al usuario a otra página o mostrar un mensaje de éxito
+      const response = await LoginService(info);
+      console.log(response.data); 
     } catch (error) {
       console.error('Error al crear usuario:', error);
-      // Aquí podrías manejar los errores y mostrar un mensaje al usuario
     } finally {
       setLoading(false);
     }

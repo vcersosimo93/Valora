@@ -1,11 +1,9 @@
 package com.valora.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_departamento")
@@ -17,14 +15,18 @@ public class Departamento {
 	
     @Column(name = "nombre", nullable = true)
     private String nombre;
+
+	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Orden> ordenes = new ArrayList<>();
     
 	public Departamento() {
 	}
 
-	public Departamento(int id, String nombre) {
+	public Departamento(int id, String nombre, List<Orden> ordenes) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.ordenes = ordenes;
 	}
 
 	public int getId() {
@@ -43,5 +45,13 @@ public class Departamento {
 		this.nombre = nombre;
 	}
 
-	
+	public List<Orden> getOrdenes() {
+		return ordenes;
+	}
+
+	public void setOrdenes(List<Orden> ordenes) {
+		this.ordenes = ordenes;
+	}
+
+
 }

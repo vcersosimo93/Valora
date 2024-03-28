@@ -1,6 +1,8 @@
 package com.valora.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -33,16 +35,18 @@ public class Orden {
 
 	//	@Column(name = "departamento")
 	@ManyToOne
+	@JoinColumn(name = "departamento_id")
+	@JsonIgnore
 	private Departamento departamento;
 
 	@Column(name = "fecha_creacion")
-	private LocalDateTime fechaCreacion;
+	private LocalDate fechaCreacion;
 
-	@Column(name = "fecha_hora_inspeccion")
-	private LocalDateTime fechaHoraInspeccion;
+	@Column(name = "fecha_inspeccion")
+	private LocalDate fechaInspeccion;
 
-	@Column(name = "fecha_solicitud")
-	private LocalDateTime fechaSolicitud;
+	@Column(name = "hora_inspeccion")
+	private LocalTime horaInspeccion;
 
 	@Column(name = "nombre_solicitante")
 	private String nombreSolicitante;
@@ -87,7 +91,7 @@ public class Orden {
 	private boolean enEstudio;
 
 	@Column(name = "fecha_antecedente")
-	private LocalDateTime fechaAntecedente;
+	private LocalDate fechaAntecedente;
 
 	@Column(name = "oficial_banco")
 	private String oficialBanco;
@@ -103,10 +107,10 @@ public class Orden {
 	}
 
 	public Orden(int id, Secretaria creador, Tasador tasadorInspeccion, Tasador tasadorAntecedente, Banco banco, Departamento departamento,
-			LocalDateTime fechaCreacion, LocalDateTime fechaHoraInspeccion, LocalDateTime fechaSolicitud,
+			LocalDate fechaCreacion, LocalDate fechaInspeccion, LocalTime horaInspeccion,
 			String nombreSolicitante, long telefonoSolicitante, String nombreContacto, long telefonoContacto, String calle,
 			int nroPuerta, int unidad, String esquina, String localidad, long padron, boolean tasacion,
-			boolean retasacion, boolean enInspeccion, boolean enEstudio, LocalDateTime fechaAntecedente,
+			boolean retasacion, boolean enInspeccion, boolean enEstudio, LocalDate fechaAntecedente,
 			String oficialBanco, String sucursal, String observacion) {
 		super();
 		this.id = id;
@@ -116,8 +120,8 @@ public class Orden {
 		this.banco = banco;
 		this.departamento = departamento;
 		this.fechaCreacion = fechaCreacion;
-		this.fechaHoraInspeccion = fechaHoraInspeccion;
-		this.fechaSolicitud = fechaSolicitud;
+		this.fechaInspeccion = fechaInspeccion;
+		this.horaInspeccion = horaInspeccion;
 		this.nombreSolicitante = nombreSolicitante;
 		this.telefonoSolicitante = telefonoSolicitante;
 		this.nombreContacto = nombreContacto;
@@ -186,28 +190,28 @@ public class Orden {
 		this.departamento = departamento;
 	}
 
-	public LocalDateTime getFechaCreacion() {
+	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(LocalDateTime fechaCreacion) {
+	public void setFechaCreacion(LocalDate fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public LocalDateTime getFechaHoraInspeccion() {
-		return fechaHoraInspeccion;
+	public LocalDate getFechaInspeccion() {
+		return fechaInspeccion;
 	}
 
-	public void setFechaHoraInspeccion(LocalDateTime fechaHoraInspeccion) {
-		this.fechaHoraInspeccion = fechaHoraInspeccion;
+	public void setFechaInspeccion(LocalDate fechaInspeccion) {
+		this.fechaInspeccion = fechaInspeccion;
 	}
 
-	public LocalDateTime getFechaSolicitud() {
-		return fechaSolicitud;
+	public LocalTime getHoraInspeccion() {
+		return horaInspeccion;
 	}
 
-	public void setFechaSolicitud(LocalDateTime fechaSolicitud) {
-		this.fechaSolicitud = fechaSolicitud;
+	public void setHoraInspeccion(LocalTime horaInspeccion) {
+		this.horaInspeccion = horaInspeccion;
 	}
 
 	public String getNombreSolicitante() {
@@ -322,11 +326,11 @@ public class Orden {
 		this.enEstudio = enEstudio;
 	}
 
-	public LocalDateTime getFechaAntecedente() {
+	public LocalDate getFechaAntecedente() {
 		return fechaAntecedente;
 	}
 
-	public void setFechaAntecedente(LocalDateTime fechaAntecedente) {
+	public void setFechaAntecedente(LocalDate fechaAntecedente) {
 		this.fechaAntecedente = fechaAntecedente;
 	}
 

@@ -3,7 +3,7 @@
 .order {
     background-color: #0f360f64;
     margin-bottom: 0; /* Elimina el margen inferior */
-    height: 260vh;
+    height: 280vh;
 }
 
 .order h2 {
@@ -40,6 +40,7 @@
 }
 
 .flex-container-inspeccion .form-group select {
+    appearance: menulist;
     height: 35px;
 }
 
@@ -147,6 +148,7 @@
 
 .flex-container-orden-tasacion .form-group select {
     height: 35px;
+    appearance: menulist
 }
 
 
@@ -205,6 +207,7 @@
 
 .flex-container-ubicacion-inmueble .form-group select {
     height: 35px;
+    appearance: menulist
 }
 
 
@@ -289,9 +292,10 @@
 
 .flex-container-antecedentes input, .flex-container-antecedentes select{
     width: 200px;
-    height: 30px;
+    height: 35px;
     font-size: 14px;
     font-weight: 600;
+    appearance: menulist
 }
 
 
@@ -363,8 +367,22 @@
 }*/
 
 
+/**************************Boton Crear Orden*********************************/
 
+.botonCrearOrden{
+    margin-top: 50px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
 
+.botonCrearOrden button{
+    margin-top: 15px;
+    background-color: #092b11;
+    border: 1px solid black;
+    display: block;
+    width: 15%;
+}
 
 
 

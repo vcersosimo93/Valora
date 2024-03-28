@@ -1,7 +1,9 @@
 package com.valora.controller;
 
 import com.valora.model.Orden;
+import com.valora.model.Tasador;
 import com.valora.services.IOrdenService;
+import com.valora.services.ITasadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,14 @@ import java.util.Optional;
 public class OrdenController {
 
     @Autowired
+    private final ITasadorService tasadorService;
+    @Autowired
     private IOrdenService ordenService;
+
+    public OrdenController(ITasadorService tasadorService, IOrdenService ordenService) {
+        this.tasadorService = tasadorService;
+        this.ordenService = ordenService;
+    }
 
     @GetMapping("/orden")
     public List<Orden> getAllOrden() {
@@ -27,6 +36,9 @@ public class OrdenController {
 
     @PostMapping("/create-orden")
     public Orden createOrden(@RequestBody Orden orden) {
+
+        //Tasador tasador = tasadorService.findById(orden.getTasadorInspeccion().getId()).orElse(null);
+        //orden.setTasadorInspeccion(tasador);
         return ordenService.save(orden);
     }
 

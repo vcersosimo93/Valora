@@ -8,7 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,11 +74,13 @@ public class ValoraApplication implements CommandLineRunner{
 		itasadorService.save(tasador);
 
 		// Orden
-		LocalDateTime fecha;
-		LocalDateTime fecha2;
+		LocalDate fechaDate;
+		LocalTime horaDate;
+		LocalDateTime fechaDateTime;
 
-		fecha = LocalDateTime.now();
-		fecha2 = LocalDateTime.of(2021, 10, 10, 10, 10, 10);
+		fechaDate = LocalDate.now();
+		horaDate = LocalTime.now();
+		fechaDateTime = LocalDateTime.of(2021, 10, 10, 10, 10, 10);
 		Orden orden = new Orden();
 
 		orden.setSecretaria(secretaria);
@@ -84,9 +88,9 @@ public class ValoraApplication implements CommandLineRunner{
 		orden.setTasadorAntecedente(tasador);
 		orden.setBanco(banco);
 		orden.setDepartamento(departamento);
-		orden.setFechaCreacion(fecha);
-		orden.setFechaHoraInspeccion(fecha);
-		orden.setFechaSolicitud(fecha);
+		orden.setFechaCreacion(fechaDate);
+		orden.setFechaInspeccion(fechaDate);
+		orden.setHoraInspeccion(horaDate);
 		orden.setNombreSolicitante("Itau");
 		orden.setTelefonoSolicitante(123456789);
 		orden.setNombreContacto("Juan");
@@ -101,7 +105,7 @@ public class ValoraApplication implements CommandLineRunner{
 		orden.setRetasacion(true);
 		orden.setEnInspeccion(true);
 		orden.setEnEstudio(true);
-		orden.setFechaAntecedente(fecha2);
+		orden.setFechaAntecedente(fechaDate);
 		orden.setOficialBanco("Oficial Banco Falso");
 		orden.setSucursal("Sucursal Falsa");
 		orden.setObservacion("Observaciones Falsas");
