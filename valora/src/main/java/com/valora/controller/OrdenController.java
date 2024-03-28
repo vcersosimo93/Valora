@@ -37,8 +37,6 @@ public class OrdenController {
     @PostMapping("/create-orden")
     public Orden createOrden(@RequestBody Orden orden) {
 
-        //Tasador tasador = tasadorService.findById(orden.getTasadorInspeccion().getId()).orElse(null);
-        //orden.setTasadorInspeccion(tasador);
         return ordenService.save(orden);
     }
 

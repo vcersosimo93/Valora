@@ -9,6 +9,7 @@ function Order() {
     const defaulttasadorInspeccion = "default value";
 
     const [tasadorInspecciones, settasadorInspecciones] = useState([]);
+    const [antecedentesTasador, setAntecedentesTasador] = useState([]);
     const [bancos, setBancos] = useState([]);
     const [departamentos, setDepartamentos] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -45,13 +46,15 @@ function Order() {
         enInspeccion: false, // Checkbox para estado de inspección
         enEstudio: false, // Checkbox para estado de estudio
         fechaAntecedente: '', // Fecha de antecedentes
-        antecedentestasadorInspeccion: '', // tasadorInspeccion de antecedentes seleccionado
+        antecedenteTasadorId: '', // tasadorInspeccion de antecedentes seleccionado
         oficialBanco: '', // Oficial de banco
         sucursal: '', // Sucursal
         observaciones: '', // Observaciones
     });
 
     const selectedTasadorId = info.tasadorInspeccion ? info.tasadorInspeccion.id : '';
+    const selectedAntecedenteTasadorId = info.antecedenteTasador ? info.antecedenteTasador.id : '';
+
 
     useEffect(() => {
         const fetchtasadorInspecciones = async () => {
@@ -66,6 +69,19 @@ function Order() {
         fetchtasadorInspecciones();
     }, [tasadorInspecciones]);
 
+
+    useEffect(() => {
+        const fetchAntecedentesTasador = async () => {
+            try {
+                const data = await OrderService.getTasadores();
+                setAntecedentesTasador(data);
+            } catch (error) {
+                // Manejar errores
+            }
+        };
+
+        fetchAntecedentesTasador();
+    }, [antecedentesTasador]);
 
 
     useEffect(() => {
@@ -99,7 +115,28 @@ function Order() {
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
 
-        if (name === 'tasadorInspeccion') {
+        if (name === 'antecedenteTasador') {
+            // Definir una función asincrónica dentro de handleInputChange
+            const fetchTasador = async () => {
+                try {
+                    // Obtener el objeto tasador completo por su ID
+                    const selectedAntecedenteTasador = await OrderService.getTasadorById(value);
+                    // Asignar el objeto tasador completo al estado
+                    setInfo(prevInfo => ({
+                        ...prevInfo,
+                        antecedenteTasador: selectedAntecedenteTasador
+                    }));
+                } catch (error) {
+                    // Manejar errores
+                }
+            };
+
+            // Llamar a la función fetchTasador
+            fetchTasador();
+        }
+
+
+        else if (name === 'tasadorInspeccion') {
             // Definir una función asincrónica dentro de handleInputChange
             const fetchTasador = async () => {
                 try {
@@ -130,13 +167,6 @@ function Order() {
             setInfo(prevInfo => ({
                 ...prevInfo,
                 departamento: value
-            }));
-        }
-        // Si el cambio proviene del select de banco, asignar directamente el valor (id) seleccionado
-        else if (name === 'antecedentestasadorInspeccion') {
-            setInfo(prevInfo => ({
-                ...prevInfo,
-                antecedentestasadorInspeccion: value
             }));
         }
         else if (name === 'fechaAntecedente') {
@@ -185,7 +215,7 @@ function Order() {
             console.log('enInspeccion:', info.enInspeccion);
             console.log('enEstudio:', info.enEstudio);
             console.log('fechaAntecedente:', info.fechaAntecedente);
-            console.log('antecedentestasadorInspeccion:', info.antecedentestasadorInspeccion);
+            console.log('antecedenteTasador:', info.antecedenteTasadorId);
             console.log('oficialBanco:', info.oficialBanco);
             console.log('sucursal:', info.sucursal);
             console.log('observaciones:', info.observaciones);
@@ -409,23 +439,24 @@ function Order() {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col label-antecedentes">
-                                            <label htmlFor="antecedentestasadorInspeccion">tasadorInspeccion :</label>
+                                            <label htmlFor="tasadorAntecedente">tasadorInspeccion :</label>
                                         </div>
                                         <div className="col">
                                             <select
                                                 className="form-control"
-                                                id="antecedentestasadorInspeccion"
-                                                name="antecedentestasadorInspeccion"
-                                                value={info.antecedentestasadorInspeccion} // Configurar el valor seleccionado
-                                                onChange={handleInputChange} // Manejar cambios en la selección
+                                                id="tasadorAntecedente"
+                                                name="tasadorAntecedente"
+                                                value={selectedAntecedenteTasadorId}
+                                                onChange={handleInputChange}
                                             >
-                                                <option value="">Selecciona un tasadorInspeccion</option> {/* Opcional: opción predeterminada */}
-                                                {tasadorInspecciones.map((tasadorInspeccion) => (
-                                                    <option key={tasadorInspeccion.id} value={tasadorInspeccion.id}>
-                                                        {tasadorInspeccion.nombre}
+                                                <option value="">Selecciona un tasador</option>
+                                                {antecedentesTasador.map((tasador) => (
+                                                    <option key={tasador.id} value={tasador.id}>
+                                                        {tasador.nombre}
                                                     </option>
                                                 ))}
                                             </select>
+
                                         </div>
                                     </div>
                                 </div>
