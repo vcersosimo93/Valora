@@ -6,6 +6,8 @@ const OrderService = {
 
   createOrden: async (ordenData) => {
     try {
+      console.log('ordenData');
+      console.log(ordenData);
       const response = await axios.post(`${API_URL}/api/create-orden`, ordenData);
       return response.data;
     } catch (error) {
@@ -26,24 +28,42 @@ const OrderService = {
 
   getTasadorById: async (id) => {
     try {
-      console.log('id', id);
       const response = await axios.get(`${API_URL}/api/tasador/${parseInt(id)}`);
-      return response.data; 
+      return response.data;
     } catch (error) {
       throw new Error('Error al obtener el tasador por ID: ' + error.message);
     }
   },
 
+  getBancoById: async (id) => {
+    try {
+      const response = await axios.get(`${API_URL}/api/banco/${parseInt(id)}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener bancos:', error);
+      throw error;
+    }
+  },
 
-getBancos: async () => {
-  try {
-    const response = await axios.get(`${API_URL}/api/banco`);
-    return response.data;
-  } catch (error) {
-    console.error('Error al obtener bancos:', error);
-    throw error;
-  }
-},
+  getBancos: async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/banco`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener bancos:', error);
+      throw error;
+    }
+  },
+
+  getDepartamentoById: async (id) => {
+    try {
+      const response = await axios.get(`${API_URL}/api/departamento/${parseInt(id)}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener departamento:', error);
+      throw error;
+    }
+  },
 
   getDepartamentos: async () => {
     try {

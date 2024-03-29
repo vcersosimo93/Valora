@@ -27,7 +27,7 @@ public class DepartamentoServiceImpl implements IDepartamentoService{
 
     @Override
     public Optional<Departamento> findById(Long id) {
-        return Optional.empty();
+        return departamentoRepository.findById(id);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class BancoServiceImpl implements IBancoService{
 
     @Override
     public Optional<Banco> findById(Long id) {
-        return Optional.empty();
+        return bancoRepository.findById(id);
     }
 
     @Override
