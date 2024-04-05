@@ -2,6 +2,7 @@ package com.valora;
 
 import com.valora.model.*;
 import com.valora.services.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,7 @@ import java.util.List;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.valora")
+//@ComponentScan(basePackages = "com.valora")
 public class ValoraApplication implements CommandLineRunner{
 	
 	@Autowired
@@ -85,7 +86,7 @@ public class ValoraApplication implements CommandLineRunner{
 
 		orden.setSecretaria(secretaria);
 		orden.setTasadorInspeccion(tasador);
-		orden.setTasadorAntecedente(tasador);
+		orden.setTasadorAntecedenteId(tasador.getId());
 		orden.setBanco(banco);
 		orden.setDepartamento(departamento);
 		orden.setFechaCreacion(fechaDate);
@@ -119,5 +120,19 @@ public class ValoraApplication implements CommandLineRunner{
 		tasador.setOrdenesInspeccion(listaOrdenes);
 
 	}
+
+
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/**")
+//						.allowedOrigins("http://localhost:3000")
+//						.allowedMethods("GET", "POST", "PUT", "DELETE")
+//						.allowCredentials(true);
+//			}
+//		};
+//	}
 
 }

@@ -1,14 +1,19 @@
 package com.valora.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_orden")
+@Data
 public class Orden {
 
 	@Id
@@ -18,15 +23,17 @@ public class Orden {
 
 	@ManyToOne
 	@JoinColumn(name = "secretaria_id")
+	@JsonIgnore
 	private Secretaria secretaria;
 
 	@ManyToOne
 	@JoinColumn(name = "tasador_inspeccion_id")
+	@JsonIgnore
 	private Tasador tasadorInspeccion;
 
-	@ManyToOne
+
 	@JoinColumn(name = "tasador_antecedente_id")
-	private Tasador tasadorAntecedente;
+	private Long tasadorAntecedenteId;
 
 	@ManyToOne
 	@JoinColumn(name = "banco_id")
@@ -102,21 +109,26 @@ public class Orden {
 	@Column(name = "observacion")
 	private String observacion;
 
+	@OneToOne
+	@JoinColumn(name = "inspeccion_id")
+	@JsonIgnore
+	private Inspeccion inspeccion;
+
 	public Orden() {
 
 	}
 
-	public Orden(int id, Secretaria creador, Tasador tasadorInspeccion, Tasador tasadorAntecedente, Banco banco, Departamento departamento,
+	public Orden(int id, Secretaria creador, Tasador tasadorInspeccion, Long tasadorAntecedenteId, Banco banco, Departamento departamento,
 			LocalDate fechaCreacion, LocalDate fechaInspeccion, LocalTime horaInspeccion,
 			String nombreSolicitante, long telefonoSolicitante, String nombreContacto, long telefonoContacto, String calle,
 			int nroPuerta, int unidad, String esquina, String localidad, long padron, boolean tasacion,
 			boolean retasacion, boolean enInspeccion, boolean enEstudio, LocalDate fechaAntecedente,
-			String oficialBanco, String sucursal, String observacion) {
+			String oficialBanco, String sucursal, String observacion, Inspeccion inspeccion) {
 		super();
 		this.id = id;
 		this.secretaria = creador;
 		this.tasadorInspeccion = tasadorInspeccion;
-		this.tasadorAntecedente = tasadorAntecedente;
+		this.tasadorAntecedenteId = tasadorAntecedenteId;
 		this.banco = banco;
 		this.departamento = departamento;
 		this.fechaCreacion = fechaCreacion;
@@ -140,6 +152,7 @@ public class Orden {
 		this.oficialBanco = oficialBanco;
 		this.sucursal = sucursal;
 		this.observacion = observacion;
+		this.inspeccion = inspeccion;
 	}
 
 	public int getId() {
@@ -150,42 +163,50 @@ public class Orden {
 		this.id = id;
 	}
 
+	@JsonIgnore
 	public Secretaria getSecretaria() {
 		return secretaria;
 	}
-
+	@JsonProperty
 	public void setSecretaria(Secretaria secretaria) {
 		this.secretaria = secretaria;
 	}
 
+	@JsonIgnore
 	public Tasador getTasadorInspeccion() {
 		return tasadorInspeccion;
 	}
 
+	@JsonProperty
 	public void setTasadorInspeccion(Tasador tasadorInspeccion) {
 		this.tasadorInspeccion = tasadorInspeccion;
 	}
 
-	public Tasador getTasadorAntecedente() {
-		return tasadorAntecedente;
+
+	public Long getTasadorAntecedenteId() {
+		return tasadorAntecedenteId;
 	}
 
-	public void setTasadorAntecedente(Tasador tasadorAntecedente) {
-		this.tasadorAntecedente = tasadorAntecedente;
+	public void setTasadorAntecedenteId(Long tasadorAntecedenteId) {
+		this.tasadorAntecedenteId = tasadorAntecedenteId;
 	}
 
+	@JsonIgnore
 	public Banco getBanco() {
 		return banco;
 	}
 
+	@JsonProperty
 	public void setBanco(Banco banco) {
 		this.banco = banco;
 	}
 
+	@JsonIgnore
 	public Departamento getDepartamento() {
 		return departamento;
 	}
 
+	@JsonProperty
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
@@ -357,5 +378,15 @@ public class Orden {
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
+
+	@JsonIgnore
+	public Inspeccion getInspeccion() {
+		return inspeccion;
+	}
+	@JsonProperty
+	public void setInspeccion(Inspeccion inspeccion) {
+		this.inspeccion = inspeccion;
+	}
+
 
 }

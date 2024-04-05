@@ -17,7 +17,7 @@ public class BancoController {
     @Autowired
     private IBancoService bancoService;
 
-    @GetMapping("/banco")
+    @GetMapping("/bancos")
     public List<Banco> getAllBanco() {
         return bancoService.findAll();
     }

@@ -18,21 +18,22 @@ function Order() {
 
     const [info, setInfo] = useState({
         // Datos generales de la orden
-        nombreOrdenTasacion: '', // Nombre de la orden de tasación
+        nombreContacto: '', // Nombre de la orden de tasación
         fechaInspeccion: '', // Fecha de inspección
         horaInspeccion: '', // Hora de inspección
 
         // Sección de orden de tasación
         fechaCreacion: '', // Fecha de la orden
         titular: '', // Titular de la orden
-        telefono: '', // Teléfono
-        contacto: '', // Contacto
+        telefonoSolicitante: '', // Teléfono
+        nombreSolicitante: '',
         telefonoContacto: '', // Teléfono de contacto
         calle: '', // Calle
-        numeroPuerta: '', // Número de puerta
+        nroPuerta: '', // Número de puerta
         unidad: '', // Unidad
         esquina: '', // Esquina
         localidad: '', // Localidad
+        tasadorAntecedenteId: '', // Asegúrate de definir tasadorAntecedenteId
         padron: '', // Padrón
 
         // Campos adicionales y checkboxes
@@ -43,11 +44,11 @@ function Order() {
         fechaAntecedente: '', // Fecha de antecedentes
         oficialBanco: '', // Oficial de banco
         sucursal: '', // Sucursal
-        observaciones: '', // Observaciones
+        observacion: '', // Observaciones
     });
 
     const selectedTasadorId = info.tasadorInspeccion ? info.tasadorInspeccion.id : '';
-    const selectedTasadorAntecedenteId = info.tasadorAntecedente ? info.tasadorAntecedente.id : '';
+    const selectedTasadorAntecedenteId = info.tasadorAntecedenteId ? info.tasadorAntecedenteId : '';
     const selectedBancoId = info.banco ? info.banco.id : '';
     const selectedDepartamentoId = info.departamento ? info.departamento.id : '';
 
@@ -130,53 +131,14 @@ function Order() {
             fetchTasador();
         }
 
-
-        else if (name === 'tasadorAntecedente') {
-            // Verificar si se selecciona el mismo tasador en ambos selectores
-            if (value === info.tasadorInspeccion?.id) {
-                // Manejar caso especial si se selecciona el mismo tasador en ambos selectores
-                // Por ejemplo, puedes actualizar el estado de `info` solo para el selector de antecedentes
-                setInfo(prevInfo => ({
-                    ...prevInfo,
-                    tasadorAntecedente: value,
-                }));
-            } else {
-                // Continuar con el manejo normal de la selección del tasador
-                const fetchTasador = async () => {
-                    try {
-                        const selectedTasadorAntecedentes = await OrderService.getTasadorById(value);
-                        setInfo(prevInfo => ({
-                            ...prevInfo,
-                            tasadorAntecedente: selectedTasadorAntecedentes
-                        }));
-                    } catch (error) {
-                        // Manejar errores
-                    }
-                };
-                fetchTasador();
-            }
+        else if (name === 'tasadorAntecedenteId') {
+            // Asignar directamente el ID al estado
+            
+            setInfo(prevInfo => ({
+                ...prevInfo,
+                tasadorAntecedenteId: value
+            }));
         }
-
-
-        // if (name === 'tasadorAntecedente') {
-
-        //     const fetchTasadorAntecedente = async () => {
-        //         try {
-        //             // Obtener el objeto tasador completo por su ID
-        //             const selectedTasadorAntecedentes = await OrderService.getTasadorById(value);
-        //             // Asignar el objeto tasador completo al estado
-        //             setInfo(prevInfo => ({
-        //                 ...prevInfo,
-        //                 tasadorAntecedente: selectedTasadorAntecedentes
-        //             }));
-        //         } catch (error) {
-        //             // Manejar errores
-        //         }
-        //     };
-
-        //     // Llamar a la función fetchTasador
-        //     fetchTasadorAntecedente();
-        // }
 
         
 
@@ -185,11 +147,12 @@ function Order() {
             const fetchBanco = async () => {
                 try {
                     // Obtener el objeto tasador completo por su ID
-                    const selecteBanco = await OrderService.getBancoById(value);
+                    const selectedBanco = await OrderService.getBancoById(value);
+                    console.log("selectedBancoId",selectedBanco.id);
                     // Asignar el objeto tasador completo al estado
                     setInfo(prevInfo => ({
                         ...prevInfo,
-                        banco: selecteBanco
+                        banco: selectedBanco
                     }));
                 } catch (error) {
                     // Manejar errores
@@ -245,18 +208,18 @@ function Order() {
             setLoading(true);
             console.log("info", info);
             // Logs para cada campo de info
-            console.log('nombreOrdenTasacion:', info.nombreOrdenTasacion);
+            console.log('nombreContacto:', info.nombreContacto);
             console.log('tasadorInspeccion:', info.tasadorInspeccion);
             console.log('fechaInspeccion:', info.fechaInspeccion);
             console.log('horaInspeccion:', info.horaInspeccion);
             console.log('fechaCreacion:', info.fechaCreacion);
             console.log('banco:', info.banco);
             console.log('titular:', info.titular);
-            console.log('telefono:', info.telefono);
-            console.log('contacto:', info.contacto);
+            console.log('telefonoSolicitante:', info.telefonoSolicitante);
+            console.log('nombreSolicitante:', info.nombreSolicitante);
             console.log('telefonoContacto:', info.telefonoContacto);
             console.log('calle:', info.calle);
-            console.log('numeroPuerta:', info.numeroPuerta);
+            console.log('nroPuerta:', info.nroPuerta);
             console.log('unidad:', info.unidad);
             console.log('esquina:', info.esquina);
             console.log('localidad:', info.localidad);
@@ -267,10 +230,10 @@ function Order() {
             console.log('enInspeccion:', info.enInspeccion);
             console.log('enEstudio:', info.enEstudio);
             console.log('fechaAntecedente:', info.fechaAntecedente);
-            console.log('tasadorAntecedente:', info.tasadorAntecedente);
+            console.log('tasadorAntecedenteId:', info.tasadorAntecedenteId);
             console.log('oficialBanco:', info.oficialBanco);
             console.log('sucursal:', info.sucursal);
-            console.log('observaciones:', info.observaciones);
+            console.log('observacion:', info.observacion);
 
             const response = await OrderService.createOrden(info);
             console.log('Orden creada:', response);
@@ -291,7 +254,7 @@ function Order() {
                     <div className="inspeccion">
                         <h4>Inspección</h4>
                         <div className="form-group">
-                            <label htmlFor="tasadorInspeccion">Tasador :</label>
+                            <label htmlFor="tasador Inspeccion">Tasador :</label>
                             <select
                                 className="form-control"
                                 id="tasadorInspeccion"
@@ -347,20 +310,20 @@ function Order() {
                             <input type="text" className="form-control" id="titular" name="titular" onChange={handleInputChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="nombreOrdenTasacion">Nombre :</label>
-                            <input type="text" className="form-control" id="nombreOrdenTasacion" name="nombreOrdenTasacion" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="telefono">Teléfono :</label>
-                            <input type="number" className="form-control" id="telefono" name="telefono" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="contacto">Contacto :</label>
-                            <input type="text" className="form-control" id="contacto" name="contacto" onChange={handleInputChange} />
+                            <label htmlFor="nombreContacto">Nombre :</label>
+                            <input type="text" className="form-control" id="nombreContacto" name="nombreContacto" onChange={handleInputChange} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="telefonoContacto">Teléfono :</label>
                             <input type="number" className="form-control" id="telefonoContacto" name="telefonoContacto" onChange={handleInputChange} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="contacto">Contacto :</label>
+                            <input type="text" className="form-control" id="nombreSolicitante" name="nombreSolicitante" onChange={handleInputChange} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="telefonoSolicitante">Teléfono :</label>
+                            <input type="number" className="form-control" id="telefonoSolicitante" name="telefonoSolicitante" onChange={handleInputChange} />
                         </div>
                     </div>
 
@@ -371,8 +334,8 @@ function Order() {
                             <input type="text" className="form-control" id="calle" name="calle" onChange={handleInputChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="numeroPuerta">Nro Puerta :</label>
-                            <input type="number" className="form-control" id="numeroPuerta" name="numeroPuerta" onChange={handleInputChange} />
+                            <label htmlFor="nroPuerta">Nro Puerta :</label>
+                            <input type="number" className="form-control" id="nroPuerta" name="nroPuerta" onChange={handleInputChange} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="unidad">Unidad :</label>
@@ -490,13 +453,13 @@ function Order() {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col label-antecedentes">
-                                            <label htmlFor="tasadorAntecedente">tasadorInspeccion :</label>
+                                            <label htmlFor="tasadorAntecedenteId">Tasador Antecedente :</label>
                                         </div>
                                         <div className="col">
                                             <select
                                                 className="form-control"
-                                                id="tasadorAntecedente"
-                                                name="tasadorAntecedente"
+                                                id="tasadorAntecedenteId"
+                                                name="tasadorAntecedenteId"
                                                 value={selectedTasadorAntecedenteId}
                                                 onChange={handleInputChange}
                                             >
@@ -549,7 +512,7 @@ function Order() {
                     <div className="observaciones" style={{ height: '20vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div className="form-outline-observaciones">
                             <h4>Observaciones</h4>
-                            <textarea className="form-control" id="observaciones" name="observaciones" rows="2" onChange={handleInputChange}></textarea>
+                            <textarea className="form-control" id="observacion" name="observacion" rows="2" onChange={handleInputChange}></textarea>
                         </div>
                     </div>
                 </div>

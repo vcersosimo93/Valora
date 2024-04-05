@@ -3,6 +3,8 @@ package com.valora.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,17 +25,21 @@ public class Banco {
     @Column(name = "nombre", nullable = true)
     private String nombre;
     
-	@OneToMany(mappedBy = "banco", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orden> ordenes = new ArrayList<>();
+	@OneToMany(mappedBy = "banco"/*, cascade = CascadeType.ALL, orphanRemoval = true*/)
+	private List<Orden> ordenes = new ArrayList<>();
+
+	@OneToMany(mappedBy = "inspeccion"/*, cascade = CascadeType.ALL, orphanRemoval = true*/)
+	private List<Inspeccion> inspecciones = new ArrayList<>();
 
 	public Banco() {
 	}
 	
-	public Banco(int id, String nombre, List<Orden> ordenes) {
+	public Banco(int id, String nombre, List<Orden> ordenes, List<Inspeccion> inspecciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.ordenes = ordenes;
+		this.inspecciones = inspecciones;
 	}
 
 	public int getId() {
@@ -59,8 +65,23 @@ public class Banco {
 	public void setOrdenes(List<Orden> ordenes) {
 		this.ordenes = ordenes;
 	}
-	
-	
+
+	public List<Inspeccion> getInspecciones() {
+		return inspecciones;
+	}
+
+	public void setInspecciones(List<Inspeccion> inspecciones) {
+		this.inspecciones = inspecciones;
+	}
+
+	public void addInspecciones(Inspeccion inspeccion){
+
+		if(this.inspecciones != null){
+			this.inspecciones.add(inspeccion);
+		}
+
+	}
+
 
 
 }

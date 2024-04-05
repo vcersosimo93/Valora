@@ -1,9 +1,9 @@
 package com.valora.controller;
 
+import com.valora.model.Banco;
 import com.valora.model.Orden;
-import com.valora.model.Tasador;
+import com.valora.services.IBancoService;
 import com.valora.services.IOrdenService;
-import com.valora.services.ITasadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +15,13 @@ import java.util.Optional;
 public class OrdenController {
 
     @Autowired
-    private final ITasadorService tasadorService;
+    private final IBancoService bancoService;
     @Autowired
     private IOrdenService ordenService;
 
-    public OrdenController(ITasadorService tasadorService, IOrdenService ordenService) {
-        this.tasadorService = tasadorService;
+    public OrdenController(/*ITasadorService tasadorService,*/ IBancoService bancoService, IOrdenService ordenService) {
+        this.bancoService = bancoService;
+//        this.tasadorService = tasadorService;
         this.ordenService = ordenService;
     }
 
