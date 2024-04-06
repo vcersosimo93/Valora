@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "tb_inspeccion")
+@Table(name = "inspeccion")
 public class Inspeccion {
 
     @Id
@@ -30,6 +30,9 @@ public class Inspeccion {
 
     private String solicitante;
 
+    @ManyToOne
+    @JoinColumn(name = "inspeccion_id")
+    @JsonIgnore
     private Departamento departamento;
 
     private String calle;
@@ -179,7 +182,7 @@ public class Inspeccion {
     private String observaciones;
 
 
-    @OneToMany(mappedBy = "local", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "inspeccion", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Local> locales;
 
 
@@ -943,4 +946,6 @@ public class Inspeccion {
         }
 
     }
+
+
 }

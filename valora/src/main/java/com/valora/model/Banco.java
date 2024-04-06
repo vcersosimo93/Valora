@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_banco")
+@Table(name = "banco")
 public class Banco {
 	
 	@Id
@@ -28,7 +28,7 @@ public class Banco {
 	@OneToMany(mappedBy = "banco"/*, cascade = CascadeType.ALL, orphanRemoval = true*/)
 	private List<Orden> ordenes = new ArrayList<>();
 
-	@OneToMany(mappedBy = "inspeccion"/*, cascade = CascadeType.ALL, orphanRemoval = true*/)
+	@OneToMany(mappedBy = "banco"/*, cascade = CascadeType.ALL, orphanRemoval = true*/)
 	private List<Inspeccion> inspecciones = new ArrayList<>();
 
 	public Banco() {
@@ -74,12 +74,11 @@ public class Banco {
 		this.inspecciones = inspecciones;
 	}
 
-	public void addInspecciones(Inspeccion inspeccion){
-
-		if(this.inspecciones != null){
-			this.inspecciones.add(inspeccion);
+	public void addInspeccion(Inspeccion inspeccion){
+		if(this.inspecciones == null){
+			this.inspecciones = new ArrayList<>();
 		}
-
+		this.inspecciones.add(inspeccion);
 	}
 
 

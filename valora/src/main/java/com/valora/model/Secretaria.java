@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "tb_secretaria")
+@Table(name = "secretaria")
 public class Secretaria extends Usuario {
 
 	@OneToMany(mappedBy = "secretaria", cascade = CascadeType.ALL)

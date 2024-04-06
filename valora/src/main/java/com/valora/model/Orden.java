@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_orden")
+@Table(name = "orden")
 @Data
 public class Orden {
 

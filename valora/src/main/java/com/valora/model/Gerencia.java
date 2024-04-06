@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "tb_gerencia")
+@Table(name = "gerencia")
 public class Gerencia extends Usuario{
 
 	public Gerencia() {

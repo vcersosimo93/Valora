@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_departamento")
+@Table(name = "departamento")
 public class Departamento {
 	
 	@Id
@@ -18,15 +18,19 @@ public class Departamento {
 
 	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Orden> ordenes = new ArrayList<>();
-    
+
+	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Inspeccion> inspecciones = new ArrayList<>();
+
 	public Departamento() {
 	}
 
-	public Departamento(int id, String nombre, List<Orden> ordenes) {
+	public Departamento(int id, String nombre, List<Orden> ordenes, List<Inspeccion> inspecciones) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.ordenes = ordenes;
+		this.inspecciones = inspecciones;
 	}
 
 	public int getId() {
@@ -53,5 +57,27 @@ public class Departamento {
 		this.ordenes = ordenes;
 	}
 
+	public void addOrden(Orden orden){
+		if(this.ordenes == null){
+			this.ordenes = new ArrayList<>();
+		}
+		this.ordenes.add(orden);
+	}
+
+
+	public List<Inspeccion> getInspecciones() {
+		return inspecciones;
+	}
+
+	public void setInspecciones(List<Inspeccion> inspecciones) {
+		this.inspecciones = inspecciones;
+	}
+
+	public void addInspeccion(Inspeccion inspeccion){
+		if(this.inspecciones == null){
+			this.inspecciones = new ArrayList<>();
+		}
+		this.inspecciones.add(inspeccion);
+	}
 
 }

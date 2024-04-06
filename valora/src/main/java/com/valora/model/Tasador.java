@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-@Table(name = "tb_tasador")
+@Table(name = "tasador")
 public class Tasador extends Usuario{
 
     @Enumerated(EnumType.STRING)
@@ -68,13 +68,13 @@ public class Tasador extends Usuario{
 		this.inspecciones = inspecciones;
 	}
 
-	public void addInspecciones(Inspeccion inspeccion){
-
-		if(this.inspecciones != null){
-			this.inspecciones.add(inspeccion);
+	public void addInspeccion(Inspeccion inspeccion){
+		if(this.inspecciones == null){
+			this.inspecciones = new ArrayList<>();
 		}
-
+		this.inspecciones.add(inspeccion);
 	}
+
 
 
 }
