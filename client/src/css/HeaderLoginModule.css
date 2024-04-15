@@ -1,7 +1,8 @@
 .header {
+  background-color: #01502f; /* Cambia el color de fondo a verde */
     display: flex; /* Usa flexbox para manejar el layout */
     align-items: center; /* Centra verticalmente los elementos */
-    height: 50px; /* Ajusta la altura según sea necesario */
+    height: 70px; /* Ajusta la altura según sea necesario */
     margin: 0; /* Elimina los márgenes externos */
     padding: 0; /* Elimina el relleno interno */
 }

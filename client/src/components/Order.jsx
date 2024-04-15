@@ -133,14 +133,14 @@ function Order() {
 
         else if (name === 'tasadorAntecedenteId') {
             // Asignar directamente el ID al estado
-            
+
             setInfo(prevInfo => ({
                 ...prevInfo,
                 tasadorAntecedenteId: value
             }));
         }
 
-        
+
 
         else if (name === 'banco') {
             // Definir una función asincrónica dentro de handleInputChange
@@ -148,7 +148,7 @@ function Order() {
                 try {
                     // Obtener el objeto tasador completo por su ID
                     const selectedBanco = await OrderService.getBancoById(value);
-                    console.log("selectedBancoId",selectedBanco.id);
+                    console.log("selectedBancoId", selectedBanco.id);
                     // Asignar el objeto tasador completo al estado
                     setInfo(prevInfo => ({
                         ...prevInfo,
@@ -164,7 +164,7 @@ function Order() {
         }
 
 
-        
+
         // Si el cambio proviene del select de banco, asignar directamente el valor (id) seleccionado
         else if (name === 'departamento') {
             // Definir una función asincrónica dentro de handleInputChange
@@ -250,264 +250,278 @@ function Order() {
         <div className="order">
             <h2>Creación Orden</h2>
             <form onSubmit={submitHandler}>
-                <div className="flex-container-inspeccion">
-                    <div className="inspeccion">
-                        <h4>Inspección</h4>
-                        <div className="form-group">
-                            <label htmlFor="tasador Inspeccion">Tasador :</label>
-                            <select
-                                className="form-control"
-                                id="tasadorInspeccion"
-                                name="tasadorInspeccion"
-                                value={selectedTasadorId}
-                                onChange={handleInputChange}
-                            >
-                                <option value="">Seleccione un tasador</option>
-                                {tasadorInspecciones.map((tasador) => (
-                                    <option key={tasador.id} value={tasador.id}>
-                                        {tasador.nombre}
-                                    </option>
-                                ))}
-                            </select>
+                <div className="main-container">
+                    <div className="ordenUbicacion">
+                        <div className="flex-container-orden-tasacion">
+                            <h4>Orden de Tasación</h4>
+                            <div className="form-group">
+                                <label htmlFor="fechaCreacion">Fecha :</label>
+                                <input type="date" className="form-control" id="fechaCreacion" name="fechaCreacion" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="banco">Banco :</label>
+                                <select
+                                    className="form-control"
+                                    id="banco"
+                                    name="banco"
+                                    value={selectedBancoId} // Configurar el valor seleccionado
+                                    onChange={handleInputChange} // Manejar cambios en la selección
+                                >
+                                    <option value="">Seleccione un banco</option> {/* Opcional: opción predeterminada */}
+                                    {bancos.map((banco) => (
+                                        <option key={banco.id} value={banco.id}>
+                                            {banco.nombre}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="titular">Titular :</label>
+                                <input type="text" className="form-control" id="titular" name="titular" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="nombreContacto">Nombre :</label>
+                                <input type="text" className="form-control" id="nombreContacto" name="nombreContacto" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="telefonoContacto">Teléfono :</label>
+                                <input type="number" className="form-control" id="telefonoContacto" name="telefonoContacto" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="contacto">Contacto :</label>
+                                <input type="text" className="form-control" id="nombreSolicitante" name="nombreSolicitante" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="telefonoSolicitante">Teléfono :</label>
+                                <input type="number" className="form-control" id="telefonoSolicitante" name="telefonoSolicitante" onChange={handleInputChange} />
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="fechaInspeccion">Fecha :</label>
-                            <input type="date" className="form-control" id="fechaInspeccion" name="fechaInspeccion" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="horaInspeccion">Hora :</label>
-                            <input type="time" className="form-control" id="horaInspeccion" name="horaInspeccion" onChange={handleInputChange} />
+
+                        <div className="flex-container-ubicacion-inmueble">
+                            <h4>Ubicación del Inmueble</h4>
+                            <div className="form-group">
+                                <label htmlFor="calle">Calle :</label>
+                                <input type="text" className="form-control" id="calle" name="calle" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="nroPuerta">Nro Puerta :</label>
+                                <input type="number" className="form-control" id="nroPuerta" name="nroPuerta" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="unidad">Unidad :</label>
+                                <input type="number" className="form-control" id="unidad" name="unidad" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="esquina">Entre/Esquina :</label>
+                                <input type="text" className="form-control" id="esquina" name="esquina" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="localidad">Localidad :</label>
+                                <input type="text" className="form-control" id="localidad" name="localidad" onChange={handleInputChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="departamento">Departamento :</label>
+                                <select
+                                    className="form-control"
+                                    id="departamento"
+                                    name="departamento"
+                                    value={selectedDepartamentoId} // Configurar el valor seleccionado
+                                    onChange={handleInputChange} // Manejar cambios en la selección
+                                >
+                                    <option value="">Seleccione un departamento</option> {/* Opcional: opción predeterminada */}
+                                    {departamentos.map((departamento) => (
+                                        <option key={departamento.id} value={departamento.id}>
+                                            {departamento.nombre}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="padron">Padrón :</label>
+                                <input type="number" className="form-control" id="padron" name="padron" onChange={handleInputChange} />
+                            </div>
                         </div>
                     </div>
+
+
+                    <div className="inspeccionTipoTrabajo">
+                        <div className="flex-container-inspeccion">
+                            <div className="inspeccion">
+                                <h4>Inspección</h4>
+                                <div className="form-group">
+                                    <label htmlFor="tasador Inspeccion">Tasador :</label>
+                                    <select
+                                        className="form-control"
+                                        id="tasadorInspeccion"
+                                        name="tasadorInspeccion"
+                                        value={selectedTasadorId}
+                                        onChange={handleInputChange}
+                                    >
+                                        <option value="">Seleccione un tasador</option>
+                                        {tasadorInspecciones.map((tasador) => (
+                                            <option key={tasador.id} value={tasador.id}>
+                                                {tasador.nombre}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="fechaInspeccion">Fecha :</label>
+                                    <input type="date" className="form-control" id="fechaInspeccion" name="fechaInspeccion" onChange={handleInputChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="horaInspeccion">Hora :</label>
+                                    <input type="time" className="form-control" id="horaInspeccion" name="horaInspeccion" onChange={handleInputChange} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="tipoTrabajoRecaudoAntecedente">
+                            <div className="flex-container-tipo-trabajo">
+                                <h4>Tipo de Trabajo</h4>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-tasacion">
+                                                    <label htmlFor="tasacion">Tasación</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="checkbox" className="form-check-input" id="tasacion" name="tasacion" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-tasacion">
+                                                    <label htmlFor="tasacion">Retasación</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="checkbox" className="form-check-input" id="retasacion" name="retasacion" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex-container-recaudos">
+                                <h4>Recaudos</h4>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-inspeccion">
+                                                    <label htmlFor="enInspeccion">En Inspección</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="checkbox" className="form-check-input" id="enInspeccion" name="enInspeccion" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-inspeccion">
+                                                    <label htmlFor="estudio">En Estudio</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="checkbox" className="form-check-input" id="enEstudio" name="enEstudio" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex-container-antecedentes">
+                                <h4>Antecedentes</h4>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-antecedentes">
+                                                    <label htmlFor="fechaAntecedente">Fecha :</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="date" className="form-control" id="fechaAntecedente" name="fechaAntecedente" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-antecedentes">
+                                                    <label htmlFor="tasadorAntecedenteId">Tasador Antecedente :</label>
+                                                </div>
+                                                <div className="col">
+                                                    <select
+                                                        className="form-control"
+                                                        id="tasadorAntecedenteId"
+                                                        name="tasadorAntecedenteId"
+                                                        value={selectedTasadorAntecedenteId}
+                                                        onChange={handleInputChange}
+                                                    >
+                                                        <option value="">Tasador</option>
+                                                        {tasadorAntecedentes.map((tasador) => (
+                                                            <option key={tasador.id} value={tasador.id}>
+                                                                {tasador.nombre}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex-container-pre-observaciones">
+                                <h4>Oficial - Sucursal</h4>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-pre-observaciones">
+                                                    <label htmlFor="oficialBanco">Oficial del Banco</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="text" className="form-control" id="oficialBanco" name="oficialBanco" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col label-pre-observaciones">
+                                                    <label htmlFor="sucursal">Sucursal</label>
+                                                </div>
+                                                <div className="col">
+                                                    <input type="text" className="form-control" id="sucursal" name="sucursal" onChange={handleInputChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
                 </div>
 
-                <div className="ordenUbicacion">
-                    <div className="flex-container-orden-tasacion">
-                        <h4>Orden de Tasación</h4>
-                        <div className="form-group">
-                            <label htmlFor="fechaCreacion">Fecha :</label>
-                            <input type="date" className="form-control" id="fechaCreacion" name="fechaCreacion" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="banco">Banco :</label>
-                             <select
-                                className="form-control"
-                                id="banco"
-                                name="banco"
-                                value={selectedBancoId} // Configurar el valor seleccionado
-                                onChange={handleInputChange} // Manejar cambios en la selección
-                            >
-                                <option value="">Seleccione un banco</option> {/* Opcional: opción predeterminada */}
-                                {bancos.map((banco) => (
-                                    <option key={banco.id} value={banco.id}>
-                                        {banco.nombre}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="titular">Titular :</label>
-                            <input type="text" className="form-control" id="titular" name="titular" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="nombreContacto">Nombre :</label>
-                            <input type="text" className="form-control" id="nombreContacto" name="nombreContacto" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="telefonoContacto">Teléfono :</label>
-                            <input type="number" className="form-control" id="telefonoContacto" name="telefonoContacto" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="contacto">Contacto :</label>
-                            <input type="text" className="form-control" id="nombreSolicitante" name="nombreSolicitante" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="telefonoSolicitante">Teléfono :</label>
-                            <input type="number" className="form-control" id="telefonoSolicitante" name="telefonoSolicitante" onChange={handleInputChange} />
-                        </div>
-                    </div>
-
-                    <div className="flex-container-ubicacion-inmueble">
-                        <h4>Ubicación del Inmueble</h4>
-                        <div className="form-group">
-                            <label htmlFor="calle">Calle :</label>
-                            <input type="text" className="form-control" id="calle" name="calle" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="nroPuerta">Nro Puerta :</label>
-                            <input type="number" className="form-control" id="nroPuerta" name="nroPuerta" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="unidad">Unidad :</label>
-                            <input type="number" className="form-control" id="unidad" name="unidad" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="esquina">Entre/Esquina :</label>
-                            <input type="text" className="form-control" id="esquina" name="esquina" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="localidad">Localidad :</label>
-                            <input type="text" className="form-control" id="localidad" name="localidad" onChange={handleInputChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="departamento">Departamento :</label>
-                            <select
-                                className="form-control"
-                                id="departamento"
-                                name="departamento"
-                                value={selectedDepartamentoId} // Configurar el valor seleccionado
-                                onChange={handleInputChange} // Manejar cambios en la selección
-                            >
-                                <option value="">Seleccione un departamento</option> {/* Opcional: opción predeterminada */}
-                                {departamentos.map((departamento) => (
-                                    <option key={departamento.id} value={departamento.id}>
-                                        {departamento.nombre}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="padron">Padrón :</label>
-                            <input type="number" className="form-control" id="padron" name="padron" onChange={handleInputChange} />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="tipoTrabajoRecaudoAntecedente">
-                    <div className="flex-container-tipo-trabajo">
-                        <h4>Tipo de Trabajo</h4>
-                        <div className="row">
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-tasacion">
-                                            <label htmlFor="tasacion">Tasación</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="checkbox" className="form-check-input" id="tasacion" name="tasacion" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-tasacion">
-                                            <label htmlFor="tasacion">Retasación</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="checkbox" className="form-check-input" id="retasacion" name="retasacion" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex-container-recaudos">
-                        <h4>Recaudos</h4>
-                        <div className="row">
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-inspeccion">
-                                            <label htmlFor="enInspeccion">En Inspección</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="checkbox" className="form-check-input" id="enInspeccion" name="enInspeccion" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-inspeccion">
-                                            <label htmlFor="estudio">En Estudio</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="checkbox" className="form-check-input" id="enEstudio" name="enEstudio" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex-container-antecedentes">
-                        <h4>Antecedentes</h4>
-                        <div className="row">
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-antecedentes">
-                                            <label htmlFor="fechaAntecedente">Fecha</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="date" className="form-control" id="fechaAntecedente" name="fechaAntecedente" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-antecedentes">
-                                            <label htmlFor="tasadorAntecedenteId">Tasador Antecedente :</label>
-                                        </div>
-                                        <div className="col">
-                                            <select
-                                                className="form-control"
-                                                id="tasadorAntecedenteId"
-                                                name="tasadorAntecedenteId"
-                                                value={selectedTasadorAntecedenteId}
-                                                onChange={handleInputChange}
-                                            >
-                                                <option value="">Seleccione un tasador</option>
-                                                {tasadorAntecedentes.map((tasador) => (
-                                                    <option key={tasador.id} value={tasador.id}>
-                                                        {tasador.nombre}
-                                                    </option>
-                                                ))}
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div className="observacionesPre">
-                    <div className="flex-container-pre-observaciones">
-                        <div className="row">
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-pre-observaciones">
-                                            <label htmlFor="oficialBanco">Oficial del Banco</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="text" className="form-control" id="oficialBanco" name="oficialBanco" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col label-pre-observaciones">
-                                            <label htmlFor="sucursal">Sucursal</label>
-                                        </div>
-                                        <div className="col">
-                                            <input type="text" className="form-control" id="sucursal" name="sucursal" onChange={handleInputChange} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div className="observaciones" style={{ height: '20vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div className="form-outline-observaciones">

@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   background-color: whitesmoke;
-  height: 50px; /* Reduce la altura del Header si es posible */
+  height: 100px; /* Reduce la altura del Header si es posible */
   margin: 0; /* Elimina márgenes externos para reducir el espacio ocupado */
   padding: 0; /* Elimina relleno interno para reducir el espacio ocupado */
 }

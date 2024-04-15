@@ -8,13 +8,15 @@
   .logo {
     font-weight: 400px;
     margin: 0%;
-    color: #494969;
+    color:aliceblue;
   }
   
   .imgHeader {
-    width: 100px;
-    height: 20px;
+    width: 150px;
+    height: auto; /* Esto permite que la altura se ajuste automáticamente según el ancho */
     margin-right: 20px;
+    filter: brightness(0) invert(1); /* Cambia la imagen a blanco */
+
   }
 
 

@@ -26,7 +26,7 @@ select.form-control {
 }
 
 .fondoBlanco {
-    background-color: #0f360f64;
+    background-color:rgb(241, 241, 241);/* Cambia el color del texto a negro */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@ select.form-control {
 }
 
 .bg-green {
-    background-color: #3d6948;
+    background-color:rgb(241, 241, 241);/* Cambia el color del texto a negro */
 }
 
 label,
