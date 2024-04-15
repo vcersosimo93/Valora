@@ -314,7 +314,7 @@
     font-weight: 500;
     width: 120px;
     /* Ancho adecuado para los labels */
-    text-align: right;
+    text-align:start;
     /* Alinea el texto a la derecha */
     margin-right: 10px;
     /* Espacio entre el label y el input/select */
@@ -348,13 +348,16 @@
     font-size: 25px;
     width: 50%; /* Ancho del borde */
     margin: auto; /* Centra el borde horizontalmente */
-    margin-top: 50px;
     margin-bottom: 20px;
+    background-color: blue;
+
 }
 
+
 .flex-container-ubicacion-inmueble .form-group {
+    background-color: aqua;
     display: flex;
-    align-items: center;
+    align-items:flex-start;
     justify-content: flex-start;
     /* Alinea horizontalmente al inicio */
     margin-bottom: 10px;
@@ -362,7 +365,7 @@
     /* Alinea a la izquierda */
     margin-right: auto;
     /* Alinea a la derecha */
-    width: 700px;
+    width: 800px;
     /* Ancho máximo del contenedor */
 }
 
@@ -377,14 +380,15 @@
 
 
 .flex-container-ubicacion-inmueble .form-group label {
+    background-color: aquamarine;
     color: #092b11;
     font-size: 16px;
     font-weight: 500;
     width: 120px;
     /* Ancho adecuado para los labels */
-    text-align: right;
+    text-align:start;
     /* Alinea el texto a la derecha */
-    margin-right: 10px;
+    /* Espacio entre el label y el input/select */
 }
 
 
