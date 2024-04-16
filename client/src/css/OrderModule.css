@@ -4,7 +4,7 @@
     /*background-color:whitesmoke;*/
     background-color:rgb(241, 241, 241);/* Cambia el color del texto a negro */
     margin-bottom: 0; /* Elimina el margen inferior */
-    height: 280vh;
+    height: 180vh;
 }
 
 .order h2 {
@@ -181,7 +181,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 
@@ -213,48 +213,47 @@
 
 /**************************Pre Observaciones*********************************/
 
-.observacionesPre{
-    max-width: 1300px; /* Puedes ajustar este valor según sea necesario */
-    margin: auto; /* Centra el formulario horizontalmente */
-    padding: 20px; /* Añade un poco de espacio alrededor del formulario */
-    background-color: rgb(255, 255, 255); /* Borde inferior de 2px */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
-    margin-bottom: 35px;
-    border-radius: 5px;
-
-}
 
 .flex-container-pre-observaciones {
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
-    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 25px;
 }
 
-.flex-container-pre-observaciones h6 {
+.flex-container-pre-observaciones .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.flex-container-pre-observaciones h4 {
     text-align: center;
-    color:black;
+    color: black;
     font-size: 25px;
+    margin-bottom: 30px;
 }
 
 .flex-container-pre-observaciones label {
     color: #092b11;
     font-size: 16px;
     font-weight: 500;
-
+    width: 165px;
+    margin-left: 30px;
 }
 
-.label-pre-observaciones {
-    text-align: center;
-}
-
-
-.flex-container-pre-observaciones input{
+.flex-container-pre-observaciones input,
+.flex-container-pre-observaciones select {
     width: 200px;
-    height: 30px;
+    height: 35px;
     font-size: 14px;
     font-weight: 600;
+    appearance: menulist;
 }
-
 
 
 /**************************orden-tasacion*********************************/
@@ -415,6 +414,16 @@
 
 /**************************Observaciones*********************************/
 
+.observacionesPre{
+    max-width: 1300px; /* Puedes ajustar este valor según sea necesario */
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Añade un poco de espacio alrededor del formulario */
+    background-color: rgb(255, 255, 255); /* Borde inferior de 2px */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+    margin-bottom: 35px;
+    border-radius: 5px;
+
+}
 
 .observaciones {
     margin-top: 50px;
@@ -448,6 +457,8 @@
 
 /**************************Boton Crear Orden*********************************/
 
+
+
 .botonCrearOrden{
     margin-top: 50px;
     display: flex; 
@@ -455,21 +466,22 @@
     align-items: center;
 }
 
+
+
+
 .botonCrearOrden button{
     margin-top: 15px;
-    background-color: #092b11;
+    background-color:black;
     border: 1px solid black;
     display: block;
     width: 15%;
 }
 
 
-
-
-
-
-
-
+.btn:hover {
+    filter: brightness(1%);  
+    
+}
 
 
 

@@ -489,7 +489,7 @@ function Order() {
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col label-pre-observaciones">
-                                                    <label htmlFor="oficialBanco">Oficial del Banco</label>
+                                                    <label htmlFor="oficialBanco">Oficial del Banco :</label>
                                                 </div>
                                                 <div className="col">
                                                     <input type="text" className="form-control" id="oficialBanco" name="oficialBanco" onChange={handleInputChange} />
@@ -497,11 +497,13 @@ function Order() {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div className="row">
                                     <div className="col">
                                         <div className="container">
                                             <div className="row">
                                                 <div className="col label-pre-observaciones">
-                                                    <label htmlFor="sucursal">Sucursal</label>
+                                                    <label htmlFor="sucursal">Sucursal :</label>
                                                 </div>
                                                 <div className="col">
                                                     <input type="text" className="form-control" id="sucursal" name="sucursal" onChange={handleInputChange} />
@@ -532,7 +534,7 @@ function Order() {
                 </div>
 
                 <div className="botonCrearOrden">
-                    <button type="submit" className="btn btn-primary button">Crear Orden</button>
+                    <button type="button" class="btn btn-primary">Crear Orden</button>
                 </div>
             </form>
         </div>
