@@ -4,6 +4,10 @@
     background-color:rgb(241, 241, 241);/* Cambia el color del texto a negro */
 }
 
+.fondoIntroInspeccion{
+    border-radius: 0px;
+}
+
 .fondoInspeccion h2 {
     color: rgb(0, 0, 0);/* Cambia el color del texto a negro */
     text-align: center;
@@ -16,10 +20,5 @@
     margin-bottom: 30px;
 }
 
-.avalador{
-    color: #092b11;
-    font-size: 16px;
-    font-weight: 500;
-    width: 80px;
-}
+
 

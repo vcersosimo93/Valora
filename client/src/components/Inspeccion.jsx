@@ -109,8 +109,8 @@ function Inspeccion() {
         <div className="container-fluid fondoInspeccion">
             <h2 className="text-center mb-4">Crear Inspección</h2>
             <div className="row justify-content-center">
-                <div className="col-md-12">
-                    <div className="card">
+                <div className="col-md-6">
+                    <div className="card fondoIntroInspeccion">
                         <div className="card-body">
                             <form onSubmit={submitHandler}>
                                 <div className="d-flex justify-content-between">

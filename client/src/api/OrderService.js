@@ -18,7 +18,8 @@ const OrderService = {
 
   getTasadores: async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/tasador`);
+      console.log('getTasadores');
+      const response = await axios.get(`${API_URL}/api/tasadores`);
       return response.data;
     } catch (error) {
       console.error('Error al obtener tasadores:', error);

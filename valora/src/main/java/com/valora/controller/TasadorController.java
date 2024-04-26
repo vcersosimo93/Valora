@@ -1,5 +1,6 @@
 package com.valora.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.valora.model.Secretaria;
@@ -15,7 +16,7 @@ public class TasadorController {
 	@Autowired
     private ITasadorService tasadorService;
 
-    @GetMapping("/tasador")
+    @GetMapping("/tasadores")
     public List<Tasador> getAllTasador() {
         return tasadorService.findAll();
     }
