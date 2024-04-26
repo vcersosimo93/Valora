@@ -248,7 +248,7 @@ function Order() {
 
     return (
         <div className="order">
-            <h2>Creación Orden</h2>
+            <h2>Crear Orden</h2>
             <form onSubmit={submitHandler}>
                 <div className="main-container">
                     <div className="ordenUbicacion">
@@ -523,8 +523,6 @@ function Order() {
 
 
                 <div className="observacionesPre">
-
-
                     <div className="observaciones" style={{ height: '20vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div className="form-outline-observaciones">
                             <h4>Observaciones</h4>
@@ -533,7 +531,7 @@ function Order() {
                     </div>
                 </div>
 
-                <div className="botonCrearOrden">
+                <div className="botonOrden">
                     <button type="button" class="btn btn-primary">Crear Orden</button>
                 </div>
             </form>

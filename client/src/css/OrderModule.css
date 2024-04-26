@@ -68,7 +68,7 @@
 .inspeccion {
     margin-bottom: 10px;
     padding: 10px;
-    border-radius: 5px;
+    
     background-color: rgb(255, 255, 255); /* Borde inferior de 2px */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
 }
@@ -290,7 +290,7 @@
     justify-content: flex-start;
     /* Alinea horizontalmente al inicio */
     margin-bottom: 10px;
-    margin-left: 20px;
+    margin-left: 80px;
     /* Alinea a la izquierda */
     /* Alinea a la derecha */
     width: 800px;
@@ -343,58 +343,42 @@
 
 .flex-container-ubicacion-inmueble h4 {
     text-align: center;
-    color:black;
+    color: black;
     font-size: 25px;
-    width: 50%; /* Ancho del borde */
-    margin: auto; /* Centra el borde horizontalmente */
+    width: 50%;
+    margin: auto;
     margin-bottom: 20px;
-    background-color: blue;
-
 }
 
-
 .flex-container-ubicacion-inmueble .form-group {
-    background-color: aqua;
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-content: flex-start;
-    /* Alinea horizontalmente al inicio */
     margin-bottom: 10px;
     margin-left: auto;
-    /* Alinea a la izquierda */
     margin-right: auto;
-    /* Alinea a la derecha */
     width: 800px;
-    /* Ancho máximo del contenedor */
 }
 
 .flex-container-ubicacion-inmueble .form-group input[type="date"],
 .flex-container-ubicacion-inmueble .form-group input[type="number"] {
     width: 200px;
-    /* Ancho deseado para los inputs de tipo date y number */
     height: 30px;
     font-size: 14px;
     font-weight: 600;
 }
 
-
 .flex-container-ubicacion-inmueble .form-group label {
-    background-color: aquamarine;
     color: #092b11;
     font-size: 16px;
     font-weight: 500;
     width: 120px;
-    /* Ancho adecuado para los labels */
-    text-align:start;
-    /* Alinea el texto a la derecha */
-    /* Espacio entre el label y el input/select */
+    text-align: start;
 }
-
 
 .flex-container-ubicacion-inmueble .form-group select,
 .flex-container-ubicacion-inmueble .form-group input[type="text"] {
     flex: 1;
-    /* El input/select ocupará todo el espacio disponible */
     height: 30px;
     font-size: 14px;
     font-weight: 600;
@@ -402,7 +386,7 @@
 
 .flex-container-ubicacion-inmueble .form-group select {
     height: 35px;
-    appearance: menulist
+    appearance: menulist;
 }
 
 
@@ -426,7 +410,6 @@
 }
 
 .observaciones {
-    margin-top: 50px;
     display: flex; 
     justify-content: center; 
     align-items: center;
@@ -449,43 +432,25 @@
     margin-bottom: 20px;
 }
 
-/*
-.form-outline-observaciones textarea {
-    width: 100%; 
-}*/
-
 
 /**************************Boton Crear Orden*********************************/
 
 
-
-.botonCrearOrden{
+.botonOrden{
     margin-top: 50px;
     display: flex; 
     justify-content: center; 
     align-items: center;
 }
 
-
-
-
-.botonCrearOrden button{
-    margin-top: 15px;
-    background-color:black;
-    border: 1px solid black;
-    display: block;
-    width: 15%;
+.botonOrden .btn{
+    background-color: #01502f; /* Cambia el color de fondo a verde */
+    border-color: transparent; /* Elimina el borde */
 }
 
-
-.btn:hover {
-    filter: brightness(1%);  
-    
+.botonOrden .btn:hover {
+    background-color: #02663b; /* Cambia el color de fondo al seleccionar */
 }
-
-
-
-
 
 
 

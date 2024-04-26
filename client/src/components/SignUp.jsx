@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SignUpService from "../api/SignUpService";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import "../css/FormsModule.css";
 
 const SignUp = () => {
@@ -46,85 +47,6 @@ const SignUp = () => {
   return (
 
     <div className="sign-up-container">
-      <div className="fondoBlanco form-container">
-        <main className="container-fluid h-100">
-          <div className="row h-100 justify-content-center align-items-center">
-            <div className="col-md-6">
-              <div className="card bg-green bg-gradient">
-                <div className="card-body">
-                  <h2 className="text-center mb-4">Registro de Usuarios</h2>
-                  <form onSubmit={submitHandler}>
-                    <div className="signUp form-group">
-                      <label htmlFor="nombre">Nombre Completo</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="nombre"
-                        placeholder=""
-                        value={info.nombre}
-                        onChange={(e) => setInfo({ ...info, nombre: e.target.value })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="username">Nombre Usuario</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="username"
-                        placeholder=""
-                        value={info.username}
-                        onChange={(e) => setInfo({ ...info, username: e.target.value })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Contraseña</label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        placeholder=""
-                        value={info.password}
-                        onChange={(e) => setInfo({ ...info, password: e.target.value })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="tipo_usuario">Tipo Usuario</label>
-                      <select
-                        className="form-control"
-                        id="tipo_usuario"
-                        value={info.tipo_usuario}
-                        onChange={handleTipoUsuarioChange}
-                      >
-                        <option value="">Seleccione un tipo de usuario</option>
-                        <option value="administrador">Administrador</option>
-                        <option value="gerencia">Gerencia</option>
-                        <option value="secretaria">Secretaria</option>
-                        <option value="tasador">Tasador</option>
-                      </select>
-                    </div>
-                    {info.tipo_usuario === 'tasador' && (
-                      <div className="form-group">
-                        <label htmlFor="especialidad">Tipo tasador</label>
-                        <select
-                          className="form-control"
-                          id="especialidad"
-                          value={info.tipo_tasador}
-                          onChange={handleTipoTasadorChange}
-                        >
-                          <option value="">Seleccione un tipo de tasador</option>
-                          <option value="relevador">Relevador</option>
-                          <option value="tasador">Tasador</option>
-                        </select>
-                      </div>
-                    )}
-                    <button type="submit" className="btn btn-primary button">Registrarse</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
     </div>
   );
 };

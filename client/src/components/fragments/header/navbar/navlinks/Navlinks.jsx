@@ -16,13 +16,13 @@ const Navlinks = () => {
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Discover</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">MyHobbies</a>
+                    <a class="nav-link" href="/Inspeccion">Inspeccion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/orden">Orden</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Discover</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/">Logout</a>

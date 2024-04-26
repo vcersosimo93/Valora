@@ -1,0 +1,25 @@
+
+.fondoInspeccion{
+
+    background-color:rgb(241, 241, 241);/* Cambia el color del texto a negro */
+}
+
+.fondoInspeccion h2 {
+    color: rgb(0, 0, 0);/* Cambia el color del texto a negro */
+    text-align: center;
+    padding: 10px 0; /* Añade un poco de espacio alrededor del texto */
+    font-size: 35px;
+    font-weight: 700;
+    border-bottom: 4px solid rgb(0, 0, 0); /* Borde inferior de 2px */
+    width: 50%; /* Ancho del borde */
+    margin: auto; /* Centra el borde horizontalmente */
+    margin-bottom: 30px;
+}
+
+.avalador{
+    color: #092b11;
+    font-size: 16px;
+    font-weight: 500;
+    width: 80px;
+}
+
