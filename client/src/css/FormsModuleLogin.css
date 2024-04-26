@@ -19,10 +19,9 @@
   }
 
 .formularioLogin{    
+    background-color: rgb(255, 255, 255); /* Borde inferior de 2px */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid transparent; /* Establece el borde como transparente */
 }
 
 /***********************************Boton************************************/
