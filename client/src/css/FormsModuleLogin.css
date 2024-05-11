@@ -43,10 +43,14 @@
 }
 
 .botonLogin .btn:hover {
+    border-color: transparent !important;
     background-color: #02663b; 
 }
 
-.botonLogin .btn:focus {
-    background-color: #02663b !important; /* Cambia el color de fondo a un verde más claro */
-    border-color: transparent; /* Opcional: puedes mantener el borde transparente */
+
+.botonLogin .btn:active {
+    border-color: transparent !important;
+    background-color: #03150d !important; /* Cambia el color de fondo cuando se selecciona */
 }
+
+

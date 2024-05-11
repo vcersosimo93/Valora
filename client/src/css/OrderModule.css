@@ -447,18 +447,14 @@
 }
 
 .botonOrden .btn{
-    background-color: #01502f; /* Cambia el color de fondo a verde */
+    background-color: #01502f; 
     border-color: transparent; /* Elimina el borde */
 }
 
 .botonOrden .btn:hover {
-    background-color: #02663b; /* Cambia el color de fondo al seleccionar */
+    background-color: #02663b; 
 }
 
-
-
-
-
-
-
-
+.botonOrden .btn:active {
+    background-color: #03150d; /* Cambia el color de fondo cuando se selecciona */
+}

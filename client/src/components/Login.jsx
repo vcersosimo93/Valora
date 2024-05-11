@@ -60,6 +60,7 @@ function Login() {
                     onChange={(e) => setInfo({ ...info, password: e.target.value })}
                   />
                 </div>
+                
                 <div className="botonLogin">
                   <button type="submit" className="btn btn-primary">Login</button>
                 </div>

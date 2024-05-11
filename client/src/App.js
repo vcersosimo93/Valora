@@ -7,6 +7,7 @@ import Footer from './components/fragments/footer/Footer.jsx';
 import HeaderLogin from './components/fragments/header/HeaderLogin.jsx';
 import Order from './components/Order.jsx';
 import Inspeccion from './components/Inspeccion.jsx';
+import Prueba from './components/prueba.jsx';
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/RegistroUsuarios" element={<WithHeader><SignUp /></WithHeader>} />
           <Route path="/Orden" element={<WithHeader><Order /></WithHeader>} />
           <Route path="/Inspeccion" element={<WithHeader><Inspeccion /></WithHeader>} />
+          <Route path="/Prueba" element={<WithHeader><Prueba /></WithHeader>} />
         </Routes>
         <Footer />
       </div>

@@ -1,10 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "../css/InspeccionModule.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 
 function Inspeccion() {
 
 
+    const myInputRef = useRef(null);
+
+    useEffect(() => {
+        if (myInputRef.current) {
+            myInputRef.current.focus();
+        }
+    }, []);
 
     const [inspeccion, setInspeccion] = useState({
         fechaCreacion: '',
@@ -544,21 +554,21 @@ function Inspeccion() {
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
                                                 <label htmlFor="frente" className="form-check-label" style={{ width: '60px' }}>Frente :</label>
-                                                <input type="number" className="form-control" id="frente" style={{ width: '120px' }} />
+                                                <input type="number" className="form-control" id="frente" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
                                                 <span style={{ marginLeft: '5px', width: '30px' }}>m</span>
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
                                                 <label htmlFor="fondo" className="form-check-label" style={{ width: '60px' }}>Fondo :</label>
-                                                <input type="number" className="form-control" id="fondo" style={{ width: '120px' }} />
+                                                <input type="number" className="form-control" id="fondo" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
                                                 <span style={{ marginLeft: '5px', width: '30px' }}>m</span>
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
                                                 <label htmlFor="supTotal" className="form-check-label" style={{ width: '60px' }}>S.Total :</label>
-                                                <input type="number" className="form-control" id="supTotal" style={{ width: '120px' }} />
+                                                <input type="number" className="form-control" id="supTotal" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
                                                 <span style={{ marginLeft: '5px', width: '30px' }}>m²</span>
                                             </div>
                                         </div>
@@ -570,9 +580,46 @@ function Inspeccion() {
                 </div>
             </div>
 
-            <div className="row justify-content-end mt-3">
-                <div className="col" >
-                    <h4 className="text-center mb-2">Cerram. Instalaciones</h4>
+
+
+            <div className="row justify-content-center m-5 ">
+                <div className="col-3 locales">
+                    <div className="mb-2">
+                        <h4 className="text-center">Locales</h4>
+                    </div>
+                    <div className="mb-5">
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Abrir modal
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="modal" tabIndex="-1" id="myModal">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Modal title</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Modal body text goes here. </p> 
+                            <input ref={myInputRef} />
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div className="row mt-3">
+                <div className="col-12" >
+                    <h4 className="text-center mb-2">Cerramientos Instalaciones</h4>
                 </div>
             </div>
 
@@ -776,8 +823,8 @@ function Inspeccion() {
             </div>
 
 
-            <div className="row justify-content-end mt-3">
-                <div className="col" >
+            <div className="row mt-3">
+                <div className="col-12" >
                     <h4 className="text-center mb-2">Consideraciones Generales</h4>
                 </div>
             </div>
@@ -789,189 +836,169 @@ function Inspeccion() {
                         <div className="card-body">
                             <form onSubmit={submitHandler}>
                                 <div className="row">
-                                    <div className="col-2">
+                                    <div className="col">
                                         <div className="col-12">
                                             <h6 className="text-center mb-4">Categoria</h6>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="modesta" className="form-check-label" style={{ width: '90px' }}>modesta :</label>
+                                                <label htmlFor="modesta" className="form-check-label" style={{ width: '125px' }}>modesta :</label>
                                                 <input type="checkbox" className="form-check-input" id="modesta" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="economica" className="form-check-label" style={{ width: '90px' }}>Económica :</label>
+                                                <label htmlFor="economica" className="form-check-label" style={{ width: '125px' }}>Económica :</label>
                                                 <input type="checkbox" className="form-check-input" id="economica" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="buena" className="form-check-label" style={{ width: '90px' }}>Buena :</label>
+                                                <label htmlFor="buena" className="form-check-label" style={{ width: '125px' }}>Buena :</label>
                                                 <input type="checkbox" className="form-check-input" id="buena" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="confortable" className="form-check-label" style={{ width: '90px' }}>Confortable :</label>
+                                                <label htmlFor="confortable" className="form-check-label" style={{ width: '125px' }}>Confortable :</label>
                                                 <input type="checkbox" className="form-check-input" id="confortable" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="muyConfort" className="form-check-label" style={{ width: '90px' }}>Muy Confort. :</label>
+                                                <label htmlFor="muyConfort" className="form-check-label" style={{ width: '125px' }}>Muy Confort. :</label>
                                                 <input type="checkbox" className="form-check-input" id="muyConfort" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-2">
+                                    <div className="col">
                                         <div className="col-12">
                                             <h6 className="text-center mb-4">Conservacion</h6>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="malo" className="form-check-label" style={{ width: '100px' }}>Malo :</label>
+                                                <label htmlFor="malo" className="form-check-label" style={{ width: '110px' }}>Malo :</label>
                                                 <input type="checkbox" className="form-check-input" id="malo" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="regular" className="form-check-label" style={{ width: '100px' }}>Regular :</label>
+                                                <label htmlFor="regular" className="form-check-label" style={{ width: '110px' }}>Regular :</label>
                                                 <input type="checkbox" className="form-check-input" id="regular" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="celosias" className="form-check-label" style={{ width: '100px' }}>Celosías :</label>
-                                                <input type="checkbox" className="form-check-input" id="celosias" />
+                                                <label htmlFor="conservacionBueno" className="form-check-label" style={{ width: '110px' }}>Bueno :</label>
+                                                <input type="checkbox" className="form-check-input" id="conservacionBueno" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="rejas" className="form-check-label" style={{ width: '100px' }}>Rejas :</label>
-                                                <input type="checkbox" className="form-check-input" id="rejas" />
+                                                <label htmlFor="conservacionMuyBueno" className="form-check-label" style={{ width: '110px' }}>Muy bueno :</label>
+                                                <input type="checkbox" className="form-check-input" id="conservacionMuyBueno" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="otrosCerramientos" className="form-check-label" style={{ width: '100px' }}>Otros :</label>
-                                                <input type="checkbox" className="form-check-input" id="otrosCerramientos" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-2">
-                                        <div className="col-12">
-                                            <h6 className="text-center mb-4">Inst. Agua</h6>
-                                        </div>
-                                        <div className="col d-flex justify-content-center">
-                                            <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="banoCal" className="form-check-label" style={{ width: '110px' }}>Baño Cal. :</label>
-                                                <input type="checkbox" className="form-check-input" id="banoCal" />
-                                            </div>
-                                        </div>
-                                        <div className="col d-flex justify-content-center">
-                                            <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="banoFria" className="form-check-label" style={{ width: '110px' }}>Baño Fría. :</label>
-                                                <input type="checkbox" className="form-check-input" id="banoFria" />
-                                            </div>
-                                        </div>
-                                        <div className="col d-flex justify-content-center">
-                                            <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="cocinaCal" className="form-check-label" style={{ width: '110px' }}>Cocina Cal. :</label>
-                                                <input type="checkbox" className="form-check-input" id="cocinaCal" />
-                                            </div>
-                                        </div>
-                                        <div className="col d-flex justify-content-center">
-                                            <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="cocinaFria" className="form-check-label" style={{ width: '110px' }}>Cocina Fría. :</label>
-                                                <input type="checkbox" className="form-check-input" id="cocinaFria" />
+                                                <label htmlFor="conservacionNuevo" className="form-check-label" style={{ width: '110px' }}>Nuevo :</label>
+                                                <input type="checkbox" className="form-check-input" id="conservacionNuevo" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-2">
+
+                                    <div className="col">
                                         <div className="col-12">
-                                            <h6 className="text-center mb-4">Inst. Elect.</h6>
+                                            <h6 className="text-center mb-4">Ocup. Actual</h6>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="embutida" className="form-check-label" style={{ width: '110px' }}>Embutida :</label>
-                                                <input type="checkbox" className="form-check-input" id="embutida" />
+                                                <label htmlFor="propietario" className="form-check-label" style={{ width: '120px' }}>Propietario :</label>
+                                                <input type="checkbox" className="form-check-input" id="propietario" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="exterior" className="form-check-label" style={{ width: '110px' }}>Exterior :</label>
-                                                <input type="checkbox" className="form-check-input" id="exterior" />
+                                                <label htmlFor="alquilada" className="form-check-label" style={{ width: '120px' }}>Alquilada :</label>
+                                                <input type="checkbox" className="form-check-input" id="alquilada" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="mixta" className="form-check-label" style={{ width: '110px' }}>Mixta :</label>
-                                                <input type="checkbox" className="form-check-input" id="mixta" />
+                                                <label htmlFor="desocupada" className="form-check-label" style={{ width: '120px' }}>Desocupada :</label>
+                                                <input type="checkbox" className="form-check-input" id="desocupada" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
-                                            <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="instGas" className="form-check-label" style={{ width: '110px' }}>Inst. Gas :</label>
-                                                <input type="checkbox" className="form-check-input" id="instGas" />
+                                            <div className="form-check d-flex ">
+                                                <label htmlFor="edad" className="form-label" style={{ width: '65px' }}>Edad :</label>
+                                                <input type="number" className="form-control" id="edad" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-2">
+
+                                    <div className="col">
                                         <div className="col-12">
-                                            <h6 className="text-center mb-4">Inst. Sanit</h6>
+                                            <h6 className="text-center mb-4">Tipo</h6>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="colector" className="form-check-label" style={{ width: '110px' }}>Colector :</label>
-                                                <input type="checkbox" className="form-check-input" id="colector" />
+                                                <label htmlFor="casa" className="form-check-label" style={{ width: '140px' }}>Casa </label>
+                                                <input type="checkbox" className="form-check-input" id="casa" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="camSeptica" className="form-check-label" style={{ width: '110px' }}>Cám.Séptica :</label>
-                                                <input type="checkbox" className="form-check-input" id="camSeptica" />
+                                                <label htmlFor="casaPH" className="form-check-label" style={{ width: '140px' }}>Casa PH </label>
+                                                <input type="checkbox" className="form-check-input" id="casaPH" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="pozoNegro" className="form-check-label" style={{ width: '110px' }}>Pozo Negro :</label>
-                                                <input type="checkbox" className="form-check-input" id="pozoNegro" />
+                                                <label htmlFor="apartamento" className="form-check-label" style={{ width: '140px' }}>Apartamento </label>
+                                                <input type="checkbox" className="form-check-input" id="apartamento" />
                                             </div>
                                         </div>
+                                        <div className="col d-flex justify-content-center">
+                                            <div className="form-check p-1 d-flex align-items-center">
+                                                <label htmlFor="localComercial" className="form-check-label" style={{ width: '140px' }}>Local Comercial </label>
+                                                <input type="checkbox" className="form-check-input" id="localComercial" />
+                                            </div>
+                                        </div>
+                                        <div className="col d-flex justify-content-center">
+                                            <div className="form-check p-1 d-flex align-items-center">
+                                                <label htmlFor="otros" className="form-check-label" style={{ width: '140px' }}>Otros </label>
+                                                <input type="checkbox" className="form-check-input" id="otros" />
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div className="col-2">
+                                    <div className="col">
                                         <div className="col-12">
-                                            <h6 className="text-center mb-4">Inst. Term</h6>
+                                            <h6 className="text-center mb-4">Edificio</h6>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="losaRad" className="form-check-label" style={{ width: '110px' }}>Losa Rad. :</label>
-                                                <input type="checkbox" className="form-check-input" id="losaRad" />
+                                                <label htmlFor="cantIdadPisos" className="form-check-label" style={{ width: '140px' }}>CantIdad Pisos </label>
+                                                <input type="checkbox" className="form-check-input" id="cantIdadPisos" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="radiadores" className="form-check-label" style={{ width: '110px' }}>Radiadores :</label>
-                                                <input type="checkbox" className="form-check-input" id="radiadores" />
+                                                <label htmlFor="aptosPiso" className="form-check-label" style={{ width: '140px' }}>Aptos/Piso </label>
+                                                <input type="checkbox" className="form-check-input" id="aptosPiso" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="panelElect" className="form-check-label" style={{ width: '110px' }}>Panel Eléct. :</label>
-                                                <input type="checkbox" className="form-check-input" id="panelElect" />
+                                                <label htmlFor="ascensores" className="form-check-label" style={{ width: '140px' }}>Ascensores </label>
+                                                <input type="checkbox" className="form-check-input" id="ascensores" />
                                             </div>
                                         </div>
                                         <div className="col d-flex justify-content-center">
                                             <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="aireAcond" className="form-check-label" style={{ width: '110px' }}>Aire Acond. :</label>
-                                                <input type="checkbox" className="form-check-input" id="aireAcond" />
-                                            </div>
-                                        </div>
-                                        <div className="col d-flex justify-content-center">
-                                            <div className="form-check p-1 d-flex align-items-center">
-                                                <label htmlFor="otrosIntTerm" className="form-check-label" style={{ width: '110px' }}>Otros :</label>
-                                                <input type="checkbox" className="form-check-input" id="otrosIntTerm" />
+                                                <label htmlFor="portElect" className="form-check-label" style={{ width: '140px' }}>Port. Eléct. </label>
+                                                <input type="checkbox" className="form-check-input" id="portElect" />
                                             </div>
                                         </div>
                                     </div>
@@ -982,8 +1009,77 @@ function Inspeccion() {
                 </div>
             </div>
 
-            <div className="botonLogin mt-3">
-                <button type="submit" className="btn btn-primary">Crear Inspección</button>
+
+            <div className="row justify-content-center mt-5">
+                <div className="col-md-6">
+                    <h4 className="text-center  mb-2">Metraje Obra Civil</h4>
+                    <div className="card fondoIntroInspeccion">
+                        <div className="card-body">
+                            <form onSubmit={submitHandler}>
+                                <div className="row">
+                                    <div className="col">
+                                        <h6 className="text-center mb-4">Propiedad Comun</h6>
+
+                                        <div className="col d-flex justify-content-center">
+                                            <div className="form-check p-1 d-flex align-items-center">
+                                                <label htmlFor="SuperficieCubierta" className="form-check-label" style={{ width: '170px' }}>Superficie Cubierta</label>
+                                                <input type="number" className="form-control" id="SuperficieCubierta" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
+                                                <span style={{ marginLeft: '5px', width: '30px' }}>m²</span>
+                                            </div>
+                                        </div>
+                                        <div className="col d-flex justify-content-center">
+                                            <div className="form-check p-1 d-flex align-items-center">
+                                                <label htmlFor="SuperficieSemiCubierta" className="form-check-label" style={{ width: '170px' }}>Superficie Semicubierta</label>
+                                                <input type="number" className="form-control" id="SuperficieSemiCubierta" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
+                                                <span style={{ marginLeft: '5px', width: '30px' }}>m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col">
+                                        <h6 className="text-center mb-4">Propiedad Horizontal</h6>
+
+                                        <div className="col d-flex justify-content-center">
+                                            <div className="form-check p-1 d-flex align-items-center">
+                                                <label htmlFor="bienesPropios" className="form-check-label" style={{ width: '130px' }}>Bienes Propios</label>
+                                                <input type="number" className="form-control" id="bienesPropios" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
+                                                <span style={{ marginLeft: '5px', width: '30px' }}>m²</span>
+                                            </div>
+                                        </div>
+                                        <div className="col d-flex justify-content-center">
+                                            <div className="form-check p-1 d-flex align-items-center">
+                                                <label htmlFor="bienesComunes" className="form-check-label" style={{ width: '130px' }}>Bienes Comunes</label>
+                                                <input type="number" className="form-control" id="bienesComunes" style={{ width: '70px', height: '30px', fontSize: '12px' }} />
+                                                <span style={{ marginLeft: '5px', width: '30px' }}>m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <h4 className="text-center mb-2">Observaciones</h4>
+                    <div className="card fondoIntroInspeccion">
+                        <div className="card-body">
+                            <form onSubmit={submitHandler}>
+                                <div className="row">
+                                    <div className="col">
+                                        <div>
+                                            <textarea className="form-control" style={{ height: '120px' }}></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="botonInspeccion">
+                <div className="m-5">
+                    <button type="submit" className="btn btn-primary">Crear Inspección</button>
+                </div>
             </div>
 
 
